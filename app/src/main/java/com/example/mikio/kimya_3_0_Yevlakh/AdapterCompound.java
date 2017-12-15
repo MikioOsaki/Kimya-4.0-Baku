@@ -39,11 +39,11 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
         DataCompound current = data.get(position);
-        myHolder.textFishName.setText(current.stoffname);
-        myHolder.textSize.setText("EG-NR: " + current.egnr);
-        myHolder.textType.setText("CAS-NR: " + current.casnr);
-        myHolder.textPrice.setText("Stoff ID " + current.id);
-        myHolder.textPrice.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
+        myHolder.textCompoundName.setText(current.stoffname);
+        myHolder.textEGNR.setText("EG-NR: " + current.egnr);
+        myHolder.textCASNR.setText("CAS-NR: " + current.casnr);
+        myHolder.textID.setText("Stoff ID " + current.id);
+        myHolder.textID.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
         myHolder.rootView.setTag(position);
         myHolder.rootView.setOnClickListener(myHolder);
     }
@@ -57,19 +57,19 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private View rootView;
-        private TextView textFishName;
-        private TextView textSize;
-        private TextView textType;
-        private TextView textPrice;
+        private TextView textCompoundName;
+        private TextView textEGNR;
+        private TextView textCASNR;
+        private TextView textID;
 
         // create constructor to get widget reference
         public MyHolder(View itemView) {
             super(itemView);
             rootView = itemView;
-            textFishName = (TextView) itemView.findViewById(R.id.textCompoundName);
-            textSize = (TextView) itemView.findViewById(R.id.textEGNR);
-            textType = (TextView) itemView.findViewById(R.id.textCASNR);
-            textPrice = (TextView) itemView.findViewById(R.id.textID);
+            textCompoundName = (TextView) itemView.findViewById(R.id.textCompoundName);
+            textEGNR = (TextView) itemView.findViewById(R.id.textEGNR);
+            textCASNR = (TextView) itemView.findViewById(R.id.textCASNR);
+            textID = (TextView) itemView.findViewById(R.id.textID);
         }
 
         // Click event for all items

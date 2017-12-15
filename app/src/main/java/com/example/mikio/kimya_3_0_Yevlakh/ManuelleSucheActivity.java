@@ -32,6 +32,14 @@ import java.util.List;
 
 public class ManuelleSucheActivity extends AppCompatActivity {
 
+    @Override
+    public void onBackPressed() {
+
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;

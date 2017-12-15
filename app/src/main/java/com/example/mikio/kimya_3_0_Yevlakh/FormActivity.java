@@ -33,6 +33,14 @@ import com.android.volley.toolbox.Volley;
     }
 
         @Override
+        public void onBackPressed() {
+
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+
+        @Override
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.buttonBack:
