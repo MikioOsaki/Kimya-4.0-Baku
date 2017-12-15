@@ -7,19 +7,19 @@
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/textCompoundName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="fish name"
-        android:id="@+id/textFishName"
+        android:text="@string/compund_name"
         android:layout_marginLeft="5dp"/>
 
     <TextView
+        android:id="@+id/textID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="price"
-        android:id="@+id/textPrice"
+        android:text="@string/compound_id"
         android:textColor="@color/colorAccent"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="5dp"
@@ -27,23 +27,23 @@
         />
 
     <TextView
+        android:id="@+id/textEGNR"
+        android:layout_below="@id/textCompoundName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textSize"
+        android:text="@string/Small_Text"
         android:layout_marginLeft="5dp"
-        android:layout_below="@id/textFishName"
         android:textColor="#666"/>
 
     <TextView
+        android:id="@+id/textCASNR"
+        android:layout_below="@id/textEGNR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="sd"
-        android:id="@+id/textType"
+        android:text="@string/sd"
         android:layout_marginLeft="5dp"
-        android:layout_below="@id/textSize"
         android:textColor="#666"/>
 
 </RelativeLayout>

@@ -10,5 +10,9 @@
     <string name="anlage">Anlage*</string>
     <string name="speichern">Speichern</string>
     <string name="manuelle_suche">Manuelle Suche</string>
+    <string name="compund_name">compund name</string>
+    <string name="compound_id">compound id</string>
+    <string name="sd">casnr</string>
+    <string name="Small_Text">egnr</string>
 
 </resources>

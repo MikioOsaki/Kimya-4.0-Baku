@@ -11,7 +11,7 @@ try {
     }
 catch(PDOException $e)
     {
-    	die("OOPs something went wrong");
+    	die("Feher beim Verbinden mit der Datenbank");
     }
 
 ?>

@@ -35,8 +35,8 @@ public class ManuelleSucheActivity extends AppCompatActivity {
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
-    private RecyclerView mRVFish;
-    private AdapterFish mAdapter;
+    private RecyclerView mRVCompound;
+    private AdapterCompound mAdapter;
 
     SearchView searchView = null;
     @Override
@@ -107,7 +107,7 @@ public class ManuelleSucheActivity extends AppCompatActivity {
             try {
 
                 // Enter URL address where your php file resides
-                url = new URL("http://141.45.92.216/fish-search.php");
+                url = new URL("http://141.45.92.216/compound-search.php");
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -183,7 +183,7 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
             //this method will be running on UI thread
             pdLoading.dismiss();
-            List<DataFish> data=new ArrayList<>();
+            List<DataCompound> data=new ArrayList<>();
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
@@ -197,26 +197,26 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                     // Extract data from json and store into ArrayList as class objects
                     for (int i = 0; i < jArray.length(); i++) {
                         JSONObject jsonData = jArray.getJSONObject(i);
-                        String fishName = jsonData.getString("fish_name");
-                        String catName = jsonData.getString("cat_name");
-                        String sizeName = jsonData.getString("size_name");
-                        int price = jsonData.getInt("price");
+                        String stoffname = jsonData.getString("stoffname");
+                        String casnr = jsonData.getString("casnr");
+                        String egnr = jsonData.getString("egnr");
+                        int id = jsonData.getInt("id");
                         String url = jsonData.getString("url");
 
-                        DataFish fishData = new DataFish(
-                                fishName,
-                                catName,
-                                sizeName,
-                                price,
+                        DataCompound dataCompound = new DataCompound(
+                                stoffname,
+                                casnr,
+                                egnr,
+                                id,
                                 url);
-                        data.add(fishData);
+                        data.add(dataCompound);
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVFish = (RecyclerView) findViewById(R.id.fishPriceList);
-                    mAdapter = new AdapterFish(ManuelleSucheActivity.this, data);
-                    mRVFish.setAdapter(mAdapter);
-                    mRVFish.setLayoutManager(new LinearLayoutManager(ManuelleSucheActivity.this));
+                    mRVCompound = (RecyclerView) findViewById(R.id.CompoundResultList);
+                    mAdapter = new AdapterCompound(ManuelleSucheActivity.this, data);
+                    mRVCompound.setAdapter(mAdapter);
+                    mRVCompound.setLayoutManager(new LinearLayoutManager(ManuelleSucheActivity.this));
 
                 } catch (JSONException e) {
                     // You to understand what actually error is and handle it appropriately
