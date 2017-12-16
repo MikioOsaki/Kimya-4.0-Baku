@@ -26,15 +26,12 @@ import com.android.volley.toolbox.Volley;
     protected void onResume() {
         super.onResume();
 
-        Button buttonBack = (Button) findViewById(R.id.buttonBack);
         Button buttonSave = (Button) findViewById(R.id.buttonSpeichern);
-        buttonBack.setOnClickListener(this);
         buttonSave.setOnClickListener(this);
     }
 
         @Override
         public void onBackPressed() {
-
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
@@ -43,14 +40,7 @@ import com.android.volley.toolbox.Volley;
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.buttonBack:
-                    Intent i = new Intent(this, MainActivity.class);
-                    startActivity(i);
-                    finish();
-                    break;
                 case R.id.buttonSpeichern:
-
-
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(this);
                     String url = "http://192.168.1.100:8001/kimya_test/insert.php";
