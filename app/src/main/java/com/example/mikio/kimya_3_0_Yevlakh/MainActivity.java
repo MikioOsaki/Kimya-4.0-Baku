@@ -60,12 +60,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.buttonQRSearch:
-                String qrSearchResult = "http://cabinporn.com/";
-                if(qrSearchResult!=null){
-                    Utils.openBrowser(view.getContext(), qrSearchResult);
-                    return;
-                }
-                Toast.makeText(view.getContext(), "Im Suchergebnis war keine URL enthalten :(", Toast.LENGTH_LONG).show();
+//                String qrSearchResult = "http://cabinporn.com/";
+//                if(qrSearchResult!=null){
+//                    Utils.openBrowser(view.getContext(), qrSearchResult);
+//                    return;
+//                }
+//                Toast.makeText(view.getContext(), "Im Suchergebnis war keine URL enthalten :(", Toast.LENGTH_LONG).show();
+                Intent iS = new Intent(this, ScanActivity.class);
+                startActivity(iS);
+                finish();
                 break;
             case R.id.buttonForm:
                 Intent iF = new Intent(this, FormActivity.class);
