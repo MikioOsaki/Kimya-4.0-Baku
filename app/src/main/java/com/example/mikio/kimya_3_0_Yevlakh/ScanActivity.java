@@ -19,6 +19,12 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import static android.Manifest.permission.CAMERA;
 
+//TODO überflüssigen code löschen
+//TODO Scan: was, wenn CAS Nr in mehreren Dokumenten vorkommt (Stoffgemsich!)
+//TODO logische Reihenfolge beachten. DAfür Konzept aufmalen. Anwendung anlegen braucht ja Login, deshalb kann es nicht einfach nach der Suche aus der Liste heraus möglich sein. Toms Mockups dafür.
+//TODO Unterschied zwischen Anlage und Anwendung klären
+
+
 public class ScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     private static final int REQUEST_CAMERA = 1;
@@ -50,6 +56,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         ActivityCompat.requestPermissions(this, new String[]{CAMERA}, REQUEST_CAMERA);
     }
 
+    //TODO ask for Permission below android 6.0 (requestPermissions  .. Dialog)
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CAMERA:
@@ -122,6 +129,9 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         final String result = rawResult.getText();
         Log.d("QRCodeScanner", rawResult.getText());
         Log.d("QRCodeScanner", rawResult.getBarcodeFormat().toString());
+
+        //TODO statt string direkt übergeben, CAS Nummer Scannen und damit die passende
+        //URL aus der DB holen und die dann dem browserIntent übergeben
 
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(result));
         ///"result" ist der Inhalt des QR codes

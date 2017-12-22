@@ -118,12 +118,10 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                 url = new URL("http://141.45.92.216/compound-search.php");
 
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
                 return e.toString();
             }
             try {
-
                 // Setup HttpURLConnection class to send and receive data from php and mysql
                 conn = (HttpURLConnection) url.openConnection();
                 conn.setReadTimeout(READ_TIMEOUT);
@@ -147,13 +145,11 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                 conn.connect();
 
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
                 return e1.toString();
             }
 
             try {
-
                 int response_code = conn.getResponseCode();
 
                 // Check if successful connection made
