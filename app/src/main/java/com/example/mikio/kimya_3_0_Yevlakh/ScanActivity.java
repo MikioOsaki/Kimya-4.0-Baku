@@ -19,12 +19,6 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import static android.Manifest.permission.CAMERA;
 
-//TODO überflüssigen code löschen
-//TODO Scan: was, wenn CAS Nr in mehreren Dokumenten vorkommt (Stoffgemsich!)
-//TODO logische Reihenfolge beachten. DAfür Konzept aufmalen. Anwendung anlegen braucht ja Login, deshalb kann es nicht einfach nach der Suche aus der Liste heraus möglich sein. Toms Mockups dafür.
-//TODO Unterschied zwischen Anlage und Anwendung klären
-
-
 public class ScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
 
     private static final int REQUEST_CAMERA = 1;
@@ -137,24 +131,5 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         ///"result" ist der Inhalt des QR codes
         startActivity(browserIntent);
 
-    //    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("Scan Result");
-//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                mScannerView.resumeCameraPreview(ScanActivity.this);
-//            }
-//        });
-//        builder.setNeutralButton("Visit", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(result));
-//                ///"result" ist der Inhalt des QR codes
-//                startActivity(browserIntent);
-//            }
-//        });
-//        builder.setMessage(rawResult.getText());
-//        AlertDialog alert1 = builder.create();
-//        alert1.show();
     }
 }
