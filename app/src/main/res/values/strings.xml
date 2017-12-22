@@ -14,5 +14,7 @@
     <string name="sd">casnr</string>
     <string name="Small_Text">egnr</string>
     <string name="compound_name">compound_name</string>
+    <string name="verfahren_t_tigkeit">Verfahren/Tätigkeit</string>
+    <string name="Anwendungsbereich">Anwendungsbereich</string>
 
 </resources>

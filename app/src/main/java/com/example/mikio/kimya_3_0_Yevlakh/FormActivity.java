@@ -26,7 +26,7 @@ import com.android.volley.toolbox.Volley;
     protected void onResume() {
         super.onResume();
 
-        Button buttonSave = (Button) findViewById(R.id.buttonSpeichern);
+        Button buttonSave = (Button) findViewById(R.id.buttonSpeichernAnlage);
         buttonSave.setOnClickListener(this);
     }
 
@@ -40,7 +40,7 @@ import com.android.volley.toolbox.Volley;
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.buttonSpeichern:
+                case R.id.buttonSpeichernAnlage:
                     // Instantiate the RequestQueue.
                     RequestQueue queue = Volley.newRequestQueue(this);
                     String url = "http://192.168.1.100:8001/kimya_test/insert.php";
