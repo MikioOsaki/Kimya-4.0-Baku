@@ -82,6 +82,7 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     String url = dataCompound.url;
                     if (url != null && !url.isEmpty()) {
                         Utils.openBrowser(clickedRow.getContext(), url);
+                        //TODO //Utils.openBrowser(this,"http://141.45.92.216/pdf_download.php");
                         return;
                     }
                 }

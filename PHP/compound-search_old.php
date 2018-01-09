@@ -4,13 +4,11 @@
      {
      	  require_once('config.inc.php');
 	  $search_query='%' . $_POST['searchQuery'] . '%';
-          $sql = '(SELECT filename FROM oro_attachment_file WHERE id = 
-            (SELECT document_id FROM chem_scan_safety_datasheet WHERE hs_id = 
-                (SELECT hs_id FROM chem_scan_hs_substance WHERE substance_id = 
-                    (SELECT id FROM `chem_scan_substance` 
-                    WHERE name LIKE :search_Query
-                    OR cas LIKE :search_query
-                    OR eg LIKE :search_query))))';
+          $sql = 'SELECT * FROM datenblattreferenz 
+          WHERE stoffname LIKE :search_query
+          OR casnr LIKE :search_query
+          OR egnr LIKE :search_query
+          ';
           $statement = $connection->prepare($sql);
 	  $statement->bindParam(':search_query', $search_query, PDO::PARAM_STR);
           $statement->execute();
