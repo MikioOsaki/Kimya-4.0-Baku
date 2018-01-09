@@ -1,0 +1,4 @@
+(SELECT filename FROM oro_attachment_file WHERE id = 
+(SELECT document_id FROM chem_scan_safety_datasheet WHERE hs_id = 
+(SELECT hs_id FROM chem_scan_hs_substance WHERE substance_id = 
+(SELECT id FROM `chem_scan_substance` WHERE name LIKE 'oxytocin'))))
