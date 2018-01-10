@@ -4,6 +4,7 @@
      {
      	  require_once('config.inc.php');
 	  $search_query='%' . $_POST['searchQuery'] . '%';
+         
           $sql = 'SELECT * FROM datenblattreferenz 
           WHERE stoffname LIKE :search_query
           OR casnr LIKE :search_query
