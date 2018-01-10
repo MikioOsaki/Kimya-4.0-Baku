@@ -5,36 +5,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="bottom"
     tools:context="com.example.mikio.kimya_3_0_Yevlakh.FormActivity">
 
-    <EditText
-        android:id="@+id/editTextAnlage"
+
+    <TextView
+        android:id="@+id/Anlage_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/anlage"/>
+        android:text="Anlage*"
+        />
+
+    <Spinner
+        android:id="@+id/Anlage_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Anlage_label"
+        android:paddingVertical="10dp" />
+
+    <TextView
+        android:id="@+id/Menge_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menge*"
+        android:layout_below="@id/Anlage_spinner"
+        />
+
 
     <EditText
         android:id="@+id/editTextMenge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/menge"
-        android:layout_below="@+id/editTextAnlage"/>
+        android:layout_below="@+id/Menge_label"/>
 
-    <EditText
-        android:id="@+id/editTextEinheit"
+    <TextView
+    android:id="@+id/Einheit_label"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Einheit*"
+        android:layout_below="@id/editTextMenge"
+    />
+
+    <Spinner
+        android:id="@+id/Einheit_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/Einheit_label"/>
+
+    <TextView
+        android:id="@+id/textViewGBULabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/einheit"
-        android:layout_below="@+id/editTextMenge"/>
+        android:layout_below="@id/Einheit_spinner"
+        android:text="GBU/BA"
+        android:background="#d5d5d5"
+        android:paddingVertical="5dp"
+        android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/buttonSpeichern"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/speichern"
-        android:layout_below="@id/editTextEinheit"/>
 
+
+ <!--
     <ImageView
         android:id="@+id/imageViewMSolutions"
         android:layout_width="match_parent"
@@ -43,6 +74,88 @@
         android:layout_marginTop="230dp"
         android:layout_marginLeft="200dp"
         android:layout_marginRight="5dp"
-        android:layout_below="@+id/buttonSpeichern"/>
+        android:layout_below="@+id/buttonSpeichernAnlage"/>
+
+
+
+-->
+    <TextView
+        android:id="@+id/Verfahren_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verfahren*"
+        android:layout_below="@id/textViewGBULabel"/>
+
+    <Spinner
+        android:id="@+id/Verfahren_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/Verfahren_label"/>
+
+    <TextView
+        android:id="@+id/Anwendungsbereich_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anwendungsbereich*"
+        android:layout_below="@id/Verfahren_spinner"/>
+
+    <Spinner
+        android:id="@+id/Anwendungsbereich_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/Anwendungsbereich_label"/>
+
+    <TextView
+        android:id="@+id/textViewSubstPruefung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Anwendungsbereich_spinner"
+        android:text="Substitutionsprüfung"
+        android:background="#d5d5d5"
+        android:paddingVertical="5dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/Produktkateg_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Produkt Kategorie*"
+        android:layout_below="@id/textViewSubstPruefung"/>
+
+    <Spinner
+        android:id="@+id/Produktkateg_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/Produktkateg_label"/>
+
+
+    <CheckBox
+        android:id="@+id/abgesystem_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abgeschlossenes System"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:layout_marginLeft="40dp"
+        android:layout_below="@id/Produktkateg_spinner"/>
+
+    <CheckBox
+        android:id="@+id/brennbar_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="brennbar"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:layout_marginLeft="14dp"
+        android:layout_below="@id/abgesystem_checkbox"/>
+
+
+    <Button
+    android:id="@+id/buttonSpeichernAnlage"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/brennbar_checkbox"
+    android:text="@string/speichern" />
+
 
 </RelativeLayout>

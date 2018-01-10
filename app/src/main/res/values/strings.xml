@@ -14,5 +14,15 @@
     <string name="sd">casnr</string>
     <string name="Small_Text">egnr</string>
     <string name="compound_name">compound_name</string>
+    <string name="verfahren_t_tigkeit">Verfahren/Tätigkeit</string>
+    <string name="Anwendungsbereich">Anwendungsbereich</string>
+    <string-array name="anlagen_array">
+        <item>Halle 1</item>
+        <item>Raum 1</item>
+    </string-array>
+    <string-array name="einheit_array">
+        <item>g</item>
+        <item>ml</item>
+    </string-array>
 
 </resources>
