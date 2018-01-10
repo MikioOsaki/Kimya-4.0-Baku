@@ -134,7 +134,7 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
 
-                // add parameter to our above url
+                // add parameter to our above reach_nr
                 Uri.Builder builder = new Uri.Builder().appendQueryParameter("searchQuery", searchQuery);
                 String query = builder.build().getEncodedQuery();
 
@@ -205,18 +205,18 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                     // Extract data from json and store into ArrayList as class objects
                     for (int i = 0; i < jArray.length(); i++) {
                         JSONObject jsonData = jArray.getJSONObject(i);
-                        String stoffname = jsonData.getString("stoffname");
-                        String casnr = jsonData.getString("casnr");
-                        String egnr = jsonData.getString("egnr");
+                        String name = jsonData.getString("name");
+                        String cas = jsonData.getString("cas");
+                        String eg = jsonData.getString("eg");
                         int id = jsonData.getInt("id");
-                        String url = jsonData.getString("url");
+                        String reach_nr = jsonData.getString("reach_nr");
 
                         DataCompound dataCompound = new DataCompound(
-                                stoffname,
-                                casnr,
-                                egnr,
+                                name,
+                                cas,
+                                eg,
                                 id,
-                                url);
+                                reach_nr);
                         data.add(dataCompound);
                     }
 

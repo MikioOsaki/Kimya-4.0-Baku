@@ -39,9 +39,9 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
         DataCompound current = data.get(position);
-        myHolder.textCompoundName.setText(current.stoffname);
-        myHolder.textEGNR.setText("EG-NR: " + current.egnr);
-        myHolder.textCASNR.setText("CAS-NR: " + current.casnr);
+        myHolder.textCompoundName.setText(current.name);
+        myHolder.textEGNR.setText("EG-NR: " + current.eg);
+        myHolder.textCASNR.setText("CAS-NR: " + current.cas);
         myHolder.textID.setText("Stoff ID " + current.id);
         myHolder.textID.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
         myHolder.rootView.setTag(position);
@@ -79,9 +79,9 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
             if (data != null && data.size() >= position) {
                 DataCompound dataCompound = data.get(position);
                 if (dataCompound != null) {
-                    String url = dataCompound.url;
-                    if (url != null && !url.isEmpty()) {
-                        Utils.openBrowser(clickedRow.getContext(), url);
+                    String fileName = dataCompound.name;
+                    if (fileName != null && !fileName.isEmpty()) {
+                        Utils.openBrowser(clickedRow.getContext(), fileName);
                         //TODO //Utils.openBrowser(this,"http://141.45.92.216/pdf_download.php");
                         return;
                     }
