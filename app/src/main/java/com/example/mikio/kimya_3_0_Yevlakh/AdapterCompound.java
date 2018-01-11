@@ -81,8 +81,8 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (dataCompound != null) {
                     String fileName = dataCompound.name;
                     if (fileName != null && !fileName.isEmpty()) {
-                        Utils.openBrowser(clickedRow.getContext(), fileName);
-                        //TODO //Utils.openBrowser(this,"http://141.45.92.216/pdf_download.php");
+                       // Utils.openBrowser(clickedRow.getContext(), fileName);
+                        Utils.openBrowser(clickedRow.getContext(),"http://141.45.92.216/pdf_download.php");
                         return;
                     }
                 }
