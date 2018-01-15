@@ -17,12 +17,37 @@
     <string name="verfahren_t_tigkeit">Verfahren/Tätigkeit</string>
     <string name="Anwendungsbereich">Anwendungsbereich</string>
     <string-array name="anlagen_array">
-        <item>Halle 1</item>
-        <item>Raum 1</item>
+        <item>Anlage Münster</item>
+        <item>Lackierroboter AL-Pig I</item>
+        <item>Lackierroboter AL-Pig</item>
+        <item>Anlage testing MQ</item>
+        <item>Anwendungsanlage</item>
     </string-array>
-    <string-array name="einheit_array">
+    <string-array name="einheit_array">plant
         <item>g</item>
+        <item>kg</item>
+        <item>t</item>
         <item>ml</item>
+        <item>l</item>
     </string-array>
+    <string-array name="wirkdauer_array">
+        <item>kurz (unter 15 min/Tag)</item>
+        <item>lang (über 15 min/Tag)</item>
+    </string-array>
+    <string-array name="wirkfläche_array">
+        <item>klein (Spritzer)</item>
+        <item>groß (z.B. ganze Hand)</item>
+    </string-array>
+    <string-array name="verwMenge_array">
+        <item>niedrig (ml/g)</item>
+        <item>mittel (l/kg)</item>
+        <item>hoch (t/+1000l)</item>
+    </string-array>
+    <string-array name="freisetz_array">
+        <item>niedrig</item>
+        <item>mittel</item>
+        <item>hoch</item>
+    </string-array>
+
 
 </resources>

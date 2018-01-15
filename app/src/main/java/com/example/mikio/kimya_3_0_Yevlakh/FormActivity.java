@@ -19,8 +19,16 @@ import com.android.volley.toolbox.Volley;
 
         Spinner anlage_spinner;
         Spinner einheit_spinner;
+        Spinner wirkdauer_spinner;
+        Spinner wirkfläche_spinner;
+        Spinner verwMenge_spinner;
+        Spinner freisetz_spinner;
         ArrayAdapter<CharSequence> anlage_adapter;
         ArrayAdapter<CharSequence> einheit_adapter;
+        ArrayAdapter<CharSequence> wirkdauer_adapter;
+        ArrayAdapter<CharSequence> wirkfläche_adapter;
+        ArrayAdapter<CharSequence> verwMenge_adapter;
+        ArrayAdapter<CharSequence> freisetz_adapter;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,30 @@ import com.android.volley.toolbox.Volley;
                     R.array.einheit_array, android.R.layout.simple_spinner_item);
             einheit_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             einheit_spinner.setAdapter(einheit_adapter);
+
+            wirkdauer_spinner = findViewById(R.id.Wirkdauer_spinner);
+            wirkdauer_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.wirkdauer_array, android.R.layout.simple_spinner_item);
+            wirkdauer_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            wirkdauer_spinner.setAdapter(wirkdauer_adapter);
+
+            wirkfläche_spinner = findViewById(R.id.Wirkfläche_spinner);
+            wirkfläche_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.wirkfläche_array, android.R.layout.simple_spinner_item);
+            wirkfläche_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            wirkfläche_spinner.setAdapter(wirkfläche_adapter);
+
+            verwMenge_spinner = findViewById(R.id.VerwMenge_spinner);
+            verwMenge_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.verwMenge_array, android.R.layout.simple_spinner_item);
+            verwMenge_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            verwMenge_spinner.setAdapter(verwMenge_adapter);
+
+            freisetz_spinner = findViewById(R.id.Freisetz_spinner);
+            freisetz_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.freisetz_array, android.R.layout.simple_spinner_item);
+            freisetz_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            freisetz_spinner.setAdapter(freisetz_adapter);
 
         }
 

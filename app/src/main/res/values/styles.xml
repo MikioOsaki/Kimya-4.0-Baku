@@ -24,4 +24,28 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
+    <style name="formelement" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="formtextview" parent="formelement">
+
+    </style>
+
+    <style name="formspinner" parent="formelement">
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="formkategorie" parent="formtextview">
+        <item name="android:background">#d5d5d5</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="formedittext" parent="formelement">
+
+    </style>
+
 </resources>
