@@ -23,12 +23,28 @@ import com.android.volley.toolbox.Volley;
         Spinner wirkfläche_spinner;
         Spinner verwMenge_spinner;
         Spinner freisetz_spinner;
+        Spinner anwendungsbereich_spinner;
+        Spinner verfahren_spinner;
+        Spinner produktkateg_spinner;
+        Spinner PROC_spinner;
+        Spinner material_spinner;
+        Spinner luftversorg_spinner;
+        Spinner häufigk_spinner;
+        Spinner staubung_spinner;
         ArrayAdapter<CharSequence> anlage_adapter;
         ArrayAdapter<CharSequence> einheit_adapter;
         ArrayAdapter<CharSequence> wirkdauer_adapter;
         ArrayAdapter<CharSequence> wirkfläche_adapter;
         ArrayAdapter<CharSequence> verwMenge_adapter;
         ArrayAdapter<CharSequence> freisetz_adapter;
+        ArrayAdapter<CharSequence> anwendungsbereich_adapter;
+        ArrayAdapter<CharSequence> verfahren_adapter;
+        ArrayAdapter<CharSequence> produktkateg_adapter;
+        ArrayAdapter<CharSequence> PROC_adapter;
+        ArrayAdapter<CharSequence> material_adapter;
+        ArrayAdapter<CharSequence> luftversorg_adapter;
+        ArrayAdapter<CharSequence> häufigk_adapter;
+        ArrayAdapter<CharSequence> staubung_adapter;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +86,53 @@ import com.android.volley.toolbox.Volley;
             freisetz_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             freisetz_spinner.setAdapter(freisetz_adapter);
 
+            anwendungsbereich_spinner = findViewById(R.id.Anwendungsbereich_spinner);
+            anwendungsbereich_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.anwendungsbereich_array, android.R.layout.simple_spinner_item);
+            anwendungsbereich_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            anwendungsbereich_spinner.setAdapter(anwendungsbereich_adapter);
+
+            verfahren_spinner = findViewById(R.id.Verfahren_spinner);
+            verfahren_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.verfahren_array, android.R.layout.simple_spinner_item);
+            verfahren_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            verfahren_spinner.setAdapter(verfahren_adapter);
+
+            produktkateg_spinner = findViewById(R.id.Produktkateg_spinner);
+            produktkateg_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.produktkateg_array, android.R.layout.simple_spinner_item);
+            produktkateg_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            produktkateg_spinner.setAdapter(produktkateg_adapter);
+
+            PROC_spinner = findViewById(R.id.PROC_spinner);
+            PROC_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.PROC_array, android.R.layout.simple_spinner_item);
+            PROC_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            PROC_spinner.setAdapter(PROC_adapter);
+
+            material_spinner = findViewById(R.id.Material_spinner);
+            material_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.material_array, android.R.layout.simple_spinner_item);
+            material_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            material_spinner.setAdapter(material_adapter);
+
+            luftversorg_spinner = findViewById(R.id.Luftversorg_spinner);
+            luftversorg_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.luftversorg_array, android.R.layout.simple_spinner_item);
+            luftversorg_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            luftversorg_spinner.setAdapter(luftversorg_adapter);
+
+            häufigk_spinner = findViewById(R.id.Häufigk_spinner);
+            häufigk_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.häufigk_array, android.R.layout.simple_spinner_item);
+            häufigk_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            häufigk_spinner.setAdapter(häufigk_adapter);
+
+            staubung_spinner = findViewById(R.id.Staubung_spinner);
+            staubung_adapter = ArrayAdapter.createFromResource(this,
+                    R.array.staubung_array, android.R.layout.simple_spinner_item);
+            staubung_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            staubung_spinner.setAdapter(staubung_adapter);
         }
 
         @Override

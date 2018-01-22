@@ -23,7 +23,7 @@
         <item>Anlage testing MQ</item>
         <item>Anwendungsanlage</item>
     </string-array>
-    <string-array name="einheit_array">plant
+    <string-array name="einheit_array">
         <item>g</item>
         <item>kg</item>
         <item>t</item>
@@ -31,23 +31,146 @@
         <item>l</item>
     </string-array>
     <string-array name="wirkdauer_array">
-        <item>kurz (unter 15 min/Tag)</item>
-        <item>lang (über 15 min/Tag)</item>
+        <item>kurz</item>
+        <item>lang</item>
     </string-array>
     <string-array name="wirkfläche_array">
-        <item>klein (Spritzer)</item>
-        <item>groß (z.B. ganze Hand)</item>
+        <item>klein</item>
+        <item>groß</item>
     </string-array>
     <string-array name="verwMenge_array">
-        <item>niedrig (ml/g)</item>
-        <item>mittel (l/kg)</item>
-        <item>hoch (t/+1000l)</item>
+        <item>niedrig</item>
+        <item>mittel</item>
+        <item>hoch</item>
     </string-array>
     <string-array name="freisetz_array">
         <item>niedrig</item>
         <item>mittel</item>
         <item>hoch</item>
     </string-array>
-
+    <string-array name="anwendungsbereich_array">
+        <item>Oberflächenbehandlung</item>
+        <item>AL-Pigmentieren</item>
+        <item>testing mq</item>
+        <item>Neu</item>
+    </string-array>
+    <string-array name="verfahren_array">
+        <item>Tauchen</item>
+        <item>test</item>
+        <item>testing mq</item>
+        <item>EMKG-Haut-HA-klein-kurz</item>
+        <item>EMKG-Haut-HA-klein-lang</item>
+        <item>EMKG-Haut-HA-groß-kurz</item>
+        <item>EMKG-Haut-HA-groß-lang</item>
+        <item>EMKG-Einatmen-A-Feststoff</item>
+        <item>EMKG-Einatmen-A-Feststoff-niedrig-gering</item>
+        <item>EMKG-Einatmen-A-Feststoff-mittel-groß</item>
+        <item>EMKG-Einatmen-A-Feststoff-hoch-groß</item>
+        <item>EMKG-Einatmen-A-Flüssig-niedrig-klein</item>
+        <item>EMKG-Einatmen-A-Flüssig-mittel-klein</item>
+        <item>EMKG-Einatmen-A-Flüssig-hoch-gering</item>
+        <item>EMKG-Einatmen-B-Feststoff-niedrig-groß</item>
+        <item>EMKG-Einatmen-B-Feststoff-mittel-mittel</item>
+        <item>EMKG-Einatmen-B-Feststoff-hoch-groß</item>
+        <item>EMKG-Einatmen-B-Flüssig-niedrig-klein</item>
+        <item>EMKG-Einatmen-B-Flüssig-mittel-mittel</item>
+        <item>EMKG-Einatmen-B-Flüssig-hoch-groß</item>
+        <item>EMKG-Einatmen-C-Feststoff-niedrig-klein</item>
+        <item>EMKG-Einatmen-C-Feststoff-mittel-mittel</item>
+        <item>EMKG-Einatmen-C-Feststoff-hoch-klein</item>
+        <item>EMKG-Einatmen-C-Flüssig-niedrig-klein</item>
+        <item>EMKG-Einatmen-C-Flüssig-mittel-groß</item>
+    </string-array>
+    <string-array name="produktkateg_array">
+        <item>Reinigen</item>
+        <item>Desinfektion</item>
+        <item>Kleben</item>
+        <item>Beschichten</item>
+        <item>Farbgebung</item>
+        <item>Beizen</item>
+        <item>Kleben</item>
+        <item>Kalibrierung</item>
+        <item>Aromatisierung</item>
+        <item>Dichtstoff</item>
+        <item>Hilfsstoff</item>
+        <item>Brenn- / Treibstoff</item>
+        <item>Umhüllen von elektronischen Bauelementen</item>
+        <item>Chipkleben</item>
+        <item>Verlöten - manuell</item>
+        <item>PC17	Hydraulikflüssigkeiten</item>
+        <item>PC1 - Klebstoffe, Dichtstoffe</item>
+        <item>PC1	Klebstoffe, Dichtstoffe</item>
+        <item>PC11	Sprengstoffe</item>
+        <item>PC12	Düngemittel</item>
+        <item>PC13	Kraftstoffe</item>
+        <item>PC14	Produkte zur Behandlung von Metalloberflächen...</item>
+        <item>PC15	Produkte zur Behandlung von Nichtmetalloberfl...</item>
+        <item>PC16	Wärmeübertragungsflüssigkeiten</item>
+        <item>PC17	Hydraulikflüssigkeiten</item>
+    </string-array>
+    <string-array name="material_array">
+        <item>Metall</item>
+        <item>Kunststoff</item>
+        <item>Haut</item>
+        <item>Kühlschmierstoff</item>
+        <item>Papier</item>
+        <item>Glas</item>
+        <item>innerbetriebliches Gemisch</item>
+        <item>Milchprodukt</item>
+        <item>Stein/Beton</item>
+        <item>Leiterplatten</item>
+        <item>Aluminium</item>
+        <item>Edelstahl</item>
+        <item>Mold</item>
+        <item>Wasser</item>
+        <item>kein</item>
+        <item>Öle</item>
+        <item>Entfettungsmittel</item>
+        <item>Reinigungsmittel</item>
+        <item>Lötmittel</item>
+        <item>Hallenboden</item>
+        <item>Pulver</item>
+    </string-array>
+    <string-array name="PROC_array">
+        <item>PROC1 Verwendung in geschlossenem Verfahren, keine Expos...</item>
+        <item>PROC2 Verwendung in geschlossenem,  kontinuierlichem Ver...</item>
+        <item>PROC3 Verwendung in geschlossenem Chargenverfahren (Synt...</item>
+        <item>PROC4 Verwendung in Chargen- und anderen Verfahren (Synt...</item>
+        <item>PROC5 Mischen oder Vermengen in Chargenverfahren zur For...</item>
+        <item>PROC6 Kalandriervorgänge</item>
+        <item>PROC10 Auftragen durch Rollen oder Streichen</item>
+        <item>PROC11 Nicht-industrielles Sprühen</item>
+        <item>PROC12 Verwendung von Blähmitteln bei der Herstellung von...</item>
+        <item>PROC13 Behandlung von Erzeugnissen durch Tauchen und Gieß...</item>
+        <item>PROC14 Produktion von Zubereitungen* oder Erzeugnissen du...</item>
+        <item>PROC15 Verwendung als Laborreagenz</item>
+        <item>PROC16 Verwendung von Material als Brennstoffquelle, begr...</item>
+        <item>PROC17 Schmierung unter Hochleistungsbedingungen und in t...</item>
+        <item>PROC18 Schmieren unter Hochleistungsbedingungen</item>
+        <item>PROC19 Handmischen mit engem Kontakt und nur persönlicher...</item>
+        <item>PROC20 Wärme- und Druckübertragungsflüssigkeiten in dispe...</item>
+        <item>PROC21 Energiearme Handhabung von Stoffen, die in Materia...</item>
+        <item>PROC22 Potenziell geschlossene Verarbeitung mit Mineralie...</item>
+        <item>PROC23 Offene Verarbeitung und Transfer mit Mineralien/Me...</item>
+        <item>PROC24 (Mechanische) Hochleistungsbearbeitung von Stoffen...</item>
+        <item>PROC25 Sonstige Warmbearbeitung mit Metallen</item>
+        <item>PROC26 Handhabung von anorganischen Feststoffen bei Umgeb...</item>
+        <item>PROC27a Produktion von Metallpulvern (Warmverfahren)</item>
+        <item>PROC27b Produktion von Metallpulvern (Nassverfahren)</item>
+    </string-array>
+    <string-array name="luftversorg_array">
+        <item>geschlossenes System</item>
+        <item>offenes System</item>
+    </string-array>
+    <string-array name="häufigk_array">
+        <item>selten</item>
+        <item>häufig</item>
+        <item>sehr häufig</item>
+    </string-array>
+    <string-array name="staubung_array">
+        <item>niedrig</item>
+        <item>mittel</item>
+        <item>hoch</item>
+    </string-array>
 
 </resources>
