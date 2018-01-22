@@ -30,11 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonManuelleSuche = (Button) findViewById(R.id.buttonManuelleSuche);
         Button buttonQRSearch = (Button) findViewById(R.id.buttonQRSearch);
         Button buttonForm = (Button) findViewById(R.id.buttonForm);
+        Button buttonQRGenerate = (Button) findViewById(R.id.buttonQRGenerate);
 
 
         buttonManuelleSuche.setOnClickListener(this);
         buttonQRSearch.setOnClickListener(this);
         buttonForm.setOnClickListener(this);
+        buttonQRGenerate.setOnClickListener(this);
     }
 
     @Override
@@ -74,6 +76,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonForm:
                 Intent iF = new Intent(this, FormActivity.class);
                 startActivity(iF);
+                finish();
+                break;
+
+            case R.id.buttonQRGenerate:
+                Intent iG=new Intent(MainActivity.this,QrGenerate.class);
+                startActivity(iG);
                 finish();
                 break;
 

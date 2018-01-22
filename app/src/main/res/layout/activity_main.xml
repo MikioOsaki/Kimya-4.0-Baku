@@ -26,7 +26,10 @@
         android:layout_below="@+id/buttonQRSearch"
         android:text="@string/neue_anwendung" />
 
-
-
-
+    <Button
+        android:id="@+id/buttonQRGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonForm"
+        android:text="+ qr code erstellen"/>
 </RelativeLayout>
