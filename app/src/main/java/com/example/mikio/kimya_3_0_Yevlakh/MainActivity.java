@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button buttonQRSearch = (Button) findViewById(R.id.buttonQRSearch);
         Button buttonForm = (Button) findViewById(R.id.buttonForm);
 
+
         buttonManuelleSuche.setOnClickListener(this);
         buttonQRSearch.setOnClickListener(this);
         buttonForm.setOnClickListener(this);
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(iF);
                 finish();
                 break;
+
 
         }
     }
