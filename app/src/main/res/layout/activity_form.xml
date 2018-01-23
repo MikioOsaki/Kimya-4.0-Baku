@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.mikio.kimya_3_0_Yevlakh.FormActivity">
@@ -10,60 +13,39 @@
 
     <TextView
         android:id="@+id/Anlage_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Anlage*"
-        />
-
+        style="@style/formtextview"
+        android:text="Anlage*"/>
     <Spinner
         android:id="@+id/Anlage_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/Anlage_label"
-        android:paddingVertical="10dp" />
+        style="@style/formspinner"
+        android:layout_below="@+id/Anlage_label"/>
 
     <TextView
         android:id="@+id/Menge_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/formtextview"
         android:text="Menge*"
-        android:layout_below="@id/Anlage_spinner"
-        />
-
-
+        android:layout_below="@id/Anlage_spinner"/>
     <EditText
         android:id="@+id/editTextMenge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/formedittext"
         android:layout_below="@+id/Menge_label"/>
 
     <TextView
-    android:id="@+id/Einheit_label"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Einheit*"
-        android:layout_below="@id/editTextMenge"
-    />
-
+        android:id="@+id/Einheit_label"
+        style="@style/formtextview"
+        android:text="Einheit*"
+        android:layout_below="@id/editTextMenge" />
     <Spinner
         android:id="@+id/Einheit_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        style="@style/formspinner"
         android:layout_below="@+id/Einheit_label"/>
+
 
     <TextView
         android:id="@+id/textViewGBULabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/formkategorie"
         android:layout_below="@id/Einheit_spinner"
-        android:text="GBU/BA"
-        android:background="#d5d5d5"
-        android:paddingVertical="5dp"
-        android:textStyle="bold"/>
-
-
+        android:text="GBU/BA"/>
 
  <!--
     <ImageView
@@ -75,78 +57,174 @@
         android:layout_marginLeft="200dp"
         android:layout_marginRight="5dp"
         android:layout_below="@+id/buttonSpeichernAnlage"/>
-
-
-
 -->
     <TextView
         android:id="@+id/Verfahren_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Verfahren*"
+        style="@style/formtextview"
+        android:text="Verfahren/Tätigkeit"
         android:layout_below="@id/textViewGBULabel"/>
-
     <Spinner
         android:id="@+id/Verfahren_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        style="@style/formspinner"
         android:layout_below="@+id/Verfahren_label"/>
 
     <TextView
         android:id="@+id/Anwendungsbereich_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Anwendungsbereich*"
+        style="@style/formtextview"
+        android:text="Anwendungsbereich/Arbeitsplatz*"
         android:layout_below="@id/Verfahren_spinner"/>
-
     <Spinner
         android:id="@+id/Anwendungsbereich_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        style="@style/formspinner"
         android:layout_below="@+id/Anwendungsbereich_label"/>
+
 
     <TextView
         android:id="@+id/textViewSubstPruefung"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/formkategorie"
         android:layout_below="@id/Anwendungsbereich_spinner"
-        android:text="Substitutionsprüfung"
-        android:background="#d5d5d5"
-        android:paddingVertical="5dp"
-        android:textStyle="bold"/>
+        android:text="Substitutionsprüfung"/>
 
     <TextView
         android:id="@+id/Produktkateg_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/formtextview"
         android:text="Produkt Kategorie*"
         android:layout_below="@id/textViewSubstPruefung"/>
-
     <Spinner
         android:id="@+id/Produktkateg_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        style="@style/formspinner"
         android:layout_below="@+id/Produktkateg_label"/>
 
+    <TextView
+        android:id="@+id/Material_label"
+        style="@style/formtextview"
+        android:text="Material*"
+        android:layout_below="@id/Produktkateg_spinner"/>
+    <Spinner
+        android:id="@+id/Material_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Material_label"/>
+
+    <TextView
+        android:id="@+id/PROC_label"
+        style="@style/formtextview"
+        android:text="PROC Code*"
+        android:layout_below="@id/Material_spinner"/>
+    <Spinner
+        android:id="@+id/PROC_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/PROC_label"/>
+
+
+    <TextView
+        android:id="@+id/textViewEMKGHaut"
+        style="@style/formkategorie"
+        android:layout_below="@id/PROC_spinner"
+        android:text="EMKG Kriterien-Haut"/>
+
+    <TextView
+        android:id="@+id/Wirkdauer_label"
+        style="@style/formtextview"
+        android:text="Wirkdauer*"
+        android:layout_below="@id/textViewEMKGHaut"/>
+    <Spinner
+        android:id="@+id/Wirkdauer_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Wirkdauer_label"/>
+
+    <TextView
+        android:id="@+id/Wirkfläche_label"
+        style="@style/formtextview"
+        android:text="Wirkfläche*"
+        android:layout_below="@id/Wirkdauer_spinner"/>
+    <Spinner
+        android:id="@+id/Wirkfläche_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Wirkfläche_label"/>
+
+
+    <TextView
+        android:id="@+id/textViewEMKGEinatmen"
+        style="@style/formkategorie"
+        android:layout_below="@id/Wirkfläche_spinner"
+        android:text="EMKG Kriterien-Einatmen"/>
+
+    <TextView
+        android:id="@+id/VerwMenge_label"
+        style="@style/formtextview"
+        android:text="verwendete Menge*"
+        android:layout_below="@id/textViewEMKGEinatmen"/>
+    <Spinner
+        android:id="@+id/VerwMenge_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/VerwMenge_label"/>
+
+    <TextView
+        android:id="@+id/Freisetz_label"
+        style="@style/formtextview"
+        android:text="Freisetzungsgruppe*"
+        android:layout_below="@id/VerwMenge_spinner"/>
+    <Spinner
+        android:id="@+id/Freisetz_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Freisetz_label"/>
+
+
+    <TextView
+        android:id="@+id/textViewEMKGBrand"
+        style="@style/formkategorie"
+        android:layout_below="@id/Freisetz_spinner"
+        android:text="EMKG Kriterien-Brand"/>
+
+    <TextView
+        android:id="@+id/Luftversorg_label"
+        style="@style/formtextview"
+        android:text="Luftversorgung*"
+        android:layout_below="@id/textViewEMKGBrand"/>
+    <Spinner
+        android:id="@+id/Luftversorg_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Luftversorg_label"/>
+
+    <TextView
+        android:id="@+id/Häufigk_label"
+        style="@style/formtextview"
+        android:text="Häufigkeit*"
+        android:layout_below="@id/Luftversorg_spinner"/>
+    <Spinner
+        android:id="@+id/Häufigk_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Häufigk_label"/>
+
+    <TextView
+        android:id="@+id/Staubung_label"
+        style="@style/formtextview"
+        android:text="Staubung"
+        android:layout_below="@id/Häufigk_spinner"/>
+    <Spinner
+        android:id="@+id/Staubung_spinner"
+        style="@style/formspinner"
+        android:layout_below="@+id/Staubung_label"/>
 
     <CheckBox
         android:id="@+id/abgesystem_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abgeschlossenes System"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:layout_marginLeft="40dp"
-        android:layout_below="@id/Produktkateg_spinner"/>
+        android:text="Abgeschlossenes System"
+        android:layout_below="@id/Staubung_spinner"/>
 
     <CheckBox
         android:id="@+id/brennbar_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="brennbar"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:layout_marginLeft="14dp"
+        android:layout_marginTop="5dp"
+        android:text="brennbar"
         android:layout_below="@id/abgesystem_checkbox"/>
 
 
@@ -157,5 +235,5 @@
     android:layout_below="@+id/brennbar_checkbox"
     android:text="@string/speichern" />
 
-
 </RelativeLayout>
+</ScrollView>

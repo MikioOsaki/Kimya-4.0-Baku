@@ -35,7 +35,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".FormActivity" />
+        <activity android:name=".FormActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
         <activity android:name=".ScanActivity" />
         <activity android:name=".QrGenerate" />
 
