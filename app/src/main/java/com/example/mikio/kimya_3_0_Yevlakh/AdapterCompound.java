@@ -98,11 +98,8 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     int substanceId = dataCompound.id;
                     String substanceIdString = String.valueOf(substanceId);
                     if (substanceIdString != null && !substanceIdString.isEmpty()) {
-                        final Intent iG;
-                        iG = new Intent(context, QrGenerate.class);
-                        context.startActivity(iG);
-                        //new AdapterCompound.AsyncFetch(substanceIdString).execute();
-                        //return;
+                        new AdapterCompound.AsyncFetch(substanceIdString).execute();
+                        return;
                     }
                 }
             }

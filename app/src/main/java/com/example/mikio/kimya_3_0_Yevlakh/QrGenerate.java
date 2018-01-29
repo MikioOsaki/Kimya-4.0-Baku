@@ -102,8 +102,9 @@ public class QrGenerate extends AppCompatActivity {
             int height = point.y;
             int smallestDimension = width < height ? width : height;
 
-            EditText qrInput = (EditText) findViewById(R.id.qrInput);
-            String qrCodeData = qrInput.getText().toString();
+            //EditText qrInput = (EditText) findViewById(R.id.qrInput);
+            String qrCodeData = getIntent().getExtras().getString("substanceCas");
+            //String qrCodeData = context.;
             //setting parameters for qr code
             String charset = "UTF-8"; // or "ISO-8859-1"
             Map<EncodeHintType, ErrorCorrectionLevel> hintMap =new HashMap<EncodeHintType, ErrorCorrectionLevel>();
@@ -142,7 +143,8 @@ public class QrGenerate extends AppCompatActivity {
             //String path = Environment.getExternalStorageDirectory().toString();
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
-            File file = new File(path, "qrcode.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
+            String qrCodeName = getIntent().getExtras().getString("substanceName");
+            File file = new File(path, qrCodeName); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
             fOut = new FileOutputStream(file);
 
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate

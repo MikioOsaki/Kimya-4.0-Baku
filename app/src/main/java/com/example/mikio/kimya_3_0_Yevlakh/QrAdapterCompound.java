@@ -83,14 +83,13 @@ public class QrAdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHol
             if (data != null && data.size() >= position) {
                 DataCompound dataCompound = data.get(position);
                 if (dataCompound != null) {
-                    int substanceId = dataCompound.id;
-                    String substanceIdString = String.valueOf(substanceId);
-                    if (substanceIdString != null && !substanceIdString.isEmpty()) {
+                    String substanceCas = dataCompound.cas;
+                    if (substanceCas != null && !substanceCas.isEmpty()) {
                         final Intent iG;
                         iG = new Intent(context, QrGenerate.class);
+                        iG.putExtra("substanceCas", dataCompound.cas);
+                        iG.putExtra("substanceName", dataCompound.name);
                         context.startActivity(iG);
-                        //new AdapterCompound.AsyncFetch(substanceIdString).execute();
-                        //return;
                     }
                 }
             }

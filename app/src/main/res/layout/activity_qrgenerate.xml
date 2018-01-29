@@ -8,14 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <EditText
+<!--        <EditText
             android:hint="Text here...."
             android:id="@+id/qrInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10">
             <requestFocus />
-        </EditText>
+        </EditText>-->
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
