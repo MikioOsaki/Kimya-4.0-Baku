@@ -215,7 +215,7 @@ public class QrGenSucheActivity extends AppCompatActivity {
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVCompound = (RecyclerView) findViewById(R.id.CompoundResultList);
+                    mRVCompound = (RecyclerView) findViewById(R.id.QrCompoundResultList);
                     mAdapter = new QrAdapterCompound(QrGenSucheActivity.this, data);
                     mRVCompound.setAdapter(mAdapter);
                     mRVCompound.setLayoutManager(new LinearLayoutManager(QrGenSucheActivity.this));
