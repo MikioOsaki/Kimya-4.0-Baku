@@ -87,8 +87,10 @@ public class QrAdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHol
                     if (substanceCas != null && !substanceCas.isEmpty()) {
                         final Intent iG;
                         iG = new Intent(context, QrGenerate.class);
+                        String substanceIdString = String.valueOf(dataCompound.id);
                         iG.putExtra("substanceCas", dataCompound.cas);
                         iG.putExtra("substanceName", dataCompound.name);
+                        iG.putExtra("substanceID", substanceIdString);
 
                         context.startActivity(iG);
                     }

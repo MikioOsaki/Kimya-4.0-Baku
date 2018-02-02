@@ -117,7 +117,7 @@ public class QrGenerate extends AppCompatActivity {
             int smallestDimension = width < height ? width : height;
 
             //substanceCas wird als Inhalt des QR Codes übegeben
-            String qrCodeData = getIntent().getExtras().getString("substanceCas");
+            String qrCodeData = getIntent().getExtras().getString("substanceID");
             //String qrCodeData = context.;
             //setting parameters for qr code
             String charset = "UTF-8"; // or "ISO-8859-1"
@@ -158,7 +158,7 @@ public class QrGenerate extends AppCompatActivity {
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
             String qrCodeName = getIntent().getExtras().getString("substanceName");
-            File file = new File(path, qrCodeName); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
+            File file = new File(path, qrCodeName+".jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
             fOut = new FileOutputStream(file);
 
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate

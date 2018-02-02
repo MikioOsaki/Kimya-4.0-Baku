@@ -191,8 +191,6 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
             } finally {
                 conn.disconnect();
             }
-
-
         }
 
         @Override
