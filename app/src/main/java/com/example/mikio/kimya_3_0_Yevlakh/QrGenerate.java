@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -37,11 +39,11 @@ public class QrGenerate extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrgenerate);
-
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
@@ -51,6 +53,12 @@ public class QrGenerate extends AppCompatActivity {
                 requestPermission();
             }
         }
+
+        String qrCodeName = getIntent().getExtras().getString("substanceName");
+        String qrCodeData = getIntent().getExtras().getString("substanceCas");
+        TextView myText = (TextView) findViewById(R.id.qrInput);
+        myText.setText("Sie wollen einen Qr Code für den Stoff "+qrCodeName+", mit dem Inhalt "+qrCodeData+" Erstellen");
+
     }
 
     @Override
@@ -91,6 +99,12 @@ public class QrGenerate extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
     public void qrGenerator(View v){
         try {
             //setting size of qr code
@@ -102,7 +116,7 @@ public class QrGenerate extends AppCompatActivity {
             int height = point.y;
             int smallestDimension = width < height ? width : height;
 
-            //EditText qrInput = (EditText) findViewById(R.id.qrInput);
+            //substanceCas wird als Inhalt des QR Codes übegeben
             String qrCodeData = getIntent().getExtras().getString("substanceCas");
             //String qrCodeData = context.;
             //setting parameters for qr code
