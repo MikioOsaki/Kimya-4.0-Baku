@@ -26,15 +26,10 @@
         android:layout_below="@+id/buttonQRSearch"
         android:text="@string/neue_anwendung" />
 
-
-    <ImageView
-        android:id="@+id/imageViewMSolutions"
+    <Button
+        android:id="@+id/buttonQRGenerate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/msolutions"
-        android:layout_marginTop="470dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@+id/editTextEinheit"/>
-
+        android:layout_below="@+id/buttonForm"
+        android:text="+ qr code erstellen"/>
 </RelativeLayout>

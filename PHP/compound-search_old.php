@@ -5,12 +5,12 @@
      	  require_once('config.inc.php');
 	  $search_query='%' . $_POST['searchQuery'] . '%';
          
-     
-         $sql = 'SELECT  name, cas, eg, id, reach_nr FROM chem_scan_substance WHERE name LIKE :search_query
-                 OR cas LIKE :search_query
-                    OR eg LIKE :search_query';
-         
-      $statement = $connection->prepare($sql);
+          $sql = 'SELECT * FROM datenblattreferenz 
+          WHERE stoffname LIKE :search_query
+          OR casnr LIKE :search_query
+          OR egnr LIKE :search_query
+          ';
+          $statement = $connection->prepare($sql);
 	  $statement->bindParam(':search_query', $search_query, PDO::PARAM_STR);
           $statement->execute();
           if($statement->rowCount())

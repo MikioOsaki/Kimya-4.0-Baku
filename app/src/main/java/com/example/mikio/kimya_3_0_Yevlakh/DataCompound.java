@@ -2,17 +2,17 @@ package com.example.mikio.kimya_3_0_Yevlakh;
 
 public class DataCompound {
 
-    public final String stoffname;
-    public final String casnr;
-    public final String egnr;
+    public final String name;
+    public final String cas;
+    public final String eg;
     public final int id;
-    public final String url;
+    public final String reach_nr;
 
-    public DataCompound(String stoffname, String casnr, String egnr, int id, String url) {
-        this.stoffname = stoffname;
-        this.casnr = casnr;
-        this.egnr = egnr;
+    public DataCompound(String name, String cas, String eg, int id, String reach_nr) {
+        this.name = name;
+        this.cas = cas;
+        this.eg = eg;
         this.id = id;
-        this.url = url;
+        this.reach_nr = reach_nr;
     }
 }
