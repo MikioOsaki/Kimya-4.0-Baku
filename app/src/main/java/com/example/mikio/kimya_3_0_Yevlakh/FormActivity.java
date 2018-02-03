@@ -73,7 +73,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         spinnerNameList.add("Einheit_spinner");
         spinnerNameList.add("Wirkdauer_spinner");
 
-
+        
         anlage_spinner = findViewById(R.id.Anlage_spinner);
         anlage_adapter = ArrayAdapter.createFromResource(this,
                 R.array.anlagen_array, android.R.layout.simple_spinner_item);
