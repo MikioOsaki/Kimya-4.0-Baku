@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
         Intent iStart = new Intent(this, StartActivity.class);
         startActivity(iStart);
         finish();
