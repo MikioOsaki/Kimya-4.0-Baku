@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorCorporate</item>
         <item name="colorPrimaryDark">@color/colorCorporate2</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/OverpassButtonStyle</item>
+    </style>
+    <style name="OverpassButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="fontFamily">@font/overpass</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
