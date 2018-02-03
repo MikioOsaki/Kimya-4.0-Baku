@@ -138,7 +138,7 @@
         android:text="Wirkfläche*"
         android:layout_below="@id/Wirkdauer_spinner"/>
     <Spinner
-        android:id="@+id/Wirkfläche_spinner"
+        android:id="@+id/Wirkflaeche_spinner"
         style="@style/formspinner"
         android:layout_below="@+id/Wirkfläche_label"/>
 
@@ -146,7 +146,7 @@
     <TextView
         android:id="@+id/textViewEMKGEinatmen"
         style="@style/formkategorie"
-        android:layout_below="@id/Wirkfläche_spinner"
+        android:layout_below="@id/Wirkflaeche_spinner"
         android:text="EMKG Kriterien-Einatmen"/>
 
     <TextView
@@ -192,7 +192,7 @@
         android:text="Häufigkeit*"
         android:layout_below="@id/Luftversorg_spinner"/>
     <Spinner
-        android:id="@+id/Häufigk_spinner"
+        android:id="@+id/Haeufigk_spinner"
         style="@style/formspinner"
         android:layout_below="@+id/Häufigk_label"/>
 
@@ -200,7 +200,7 @@
         android:id="@+id/Staubung_label"
         style="@style/formtextview"
         android:text="Staubung"
-        android:layout_below="@id/Häufigk_spinner"/>
+        android:layout_below="@id/Haeufigk_spinner"/>
     <Spinner
         android:id="@+id/Staubung_spinner"
         style="@style/formspinner"

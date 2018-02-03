@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kimya 3.0 - Yevlakh</string>
+    <string name="app_name">Kimya</string>
     <string name="gefahrenstoff">Gefahrenstoff</string>
     <string name="mit_qr_code_finden">Mit QR Code finden</string>
     <string name="neue_anwendung">+ Anwendung hinzufügen</string>
@@ -34,7 +34,7 @@
         <item>kurz</item>
         <item>lang</item>
     </string-array>
-    <string-array name="wirkfläche_array">
+    <string-array name="wirkflaeche_array">
         <item>klein</item>
         <item>groß</item>
     </string-array>
@@ -162,7 +162,7 @@
         <item>geschlossenes System</item>
         <item>offenes System</item>
     </string-array>
-    <string-array name="häufigk_array">
+    <string-array name="haeufigk_array">
         <item>selten</item>
         <item>häufig</item>
         <item>sehr häufig</item>
