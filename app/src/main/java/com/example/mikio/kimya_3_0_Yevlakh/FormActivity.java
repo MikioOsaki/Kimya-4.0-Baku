@@ -86,7 +86,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
+        
         anlage_spinner = findViewById(R.id.Anlage_spinner);
         anlage_adapter = ArrayAdapter.createFromResource(this,
                 R.array.anlagen_array, android.R.layout.simple_spinner_item);
