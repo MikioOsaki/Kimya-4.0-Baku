@@ -38,12 +38,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonForm.setOnClickListener(this);
         buttonQRGenerate.setOnClickListener(this);
 
-        String isUser = getIntent().getExtras().getString("checkUser");
+        try {
+            String isUser = getIntent().getExtras().getString("checkUser");
 
-        if (isUser.equals("isUser")){
-            buttonForm.setVisibility(View.GONE);
-            buttonQRGenerate.setVisibility(View.GONE);
+            if (isUser.equals("isUser")){
+                buttonForm.setVisibility(View.GONE);
+                buttonQRGenerate.setVisibility(View.GONE);
+            }
         }
+
+        catch (Exception E){
+            return;
+        }
+
+
     }
 
     @Override
