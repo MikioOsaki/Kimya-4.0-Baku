@@ -158,14 +158,15 @@ public class QrGenerate extends AppCompatActivity {
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
             String qrCodeName = getIntent().getExtras().getString("substanceName");
-            File file = new File(path, qrCodeName+"QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
+            File file = new File(path, qrCodeName+" QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
             fOut = new FileOutputStream(file);
-
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate
             fOut.flush(); // Not really required
             fOut.close(); // do not forget to close the stream
 
             MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+
+            Toast.makeText(this, "Sie haben den QR-Code für den Stoff "+qrCodeName+" erstellt. Er ist auf dem internen Speicher Ihres Handys zu finden.", Toast.LENGTH_LONG).show();
         }
         catch (Exception er){
             Log.e("QrGenerate",er.getMessage());
