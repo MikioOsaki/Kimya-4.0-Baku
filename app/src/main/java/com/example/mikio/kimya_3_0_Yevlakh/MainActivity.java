@@ -37,6 +37,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonQRSearch.setOnClickListener(this);
         buttonForm.setOnClickListener(this);
         buttonQRGenerate.setOnClickListener(this);
+
+        try {
+            String isUser = getIntent().getExtras().getString("checkUser");
+
+            if (isUser.equals("isUser")){
+                buttonForm.setVisibility(View.GONE);
+                buttonQRGenerate.setVisibility(View.GONE);
+            }
+        }
+
+        catch (Exception E){
+            return;
+        }
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent iStart = new Intent(this, StartActivity.class);
+        startActivity(iStart);
+        finish();
     }
 
     @Override
@@ -52,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
-    }
+}
 
     @Override
     public void onClick(View view) {
