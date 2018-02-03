@@ -9,7 +9,7 @@ package com.example.mikio.kimya_3_0_Yevlakh;
         import android.view.View;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
-        import android.widget.EditText;
+        import android.widget.CheckBox;
         import android.widget.Spinner;
 
         import java.io.BufferedReader;
@@ -25,8 +25,6 @@ package com.example.mikio.kimya_3_0_Yevlakh;
         import java.util.ArrayList;
         import java.util.List;
 
-        import me.dm7.barcodescanner.zxing.ZXingScannerView;
-
 public class FormActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final int CONNECTION_TIMEOUT = 10000;
@@ -38,7 +36,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     Spinner anlage_spinner;
     Spinner einheit_spinner;
     Spinner wirkdauer_spinner;
-    Spinner wirkfläche_spinner;
+    Spinner wirkflaeche_spinner;
     Spinner verwMenge_spinner;
     Spinner freisetz_spinner;
     Spinner anwendungsbereich_spinner;
@@ -47,12 +45,12 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     Spinner PROC_spinner;
     Spinner material_spinner;
     Spinner luftversorg_spinner;
-    Spinner häufigk_spinner;
+    Spinner haeufigk_spinner;
     Spinner staubung_spinner;
     ArrayAdapter<CharSequence> anlage_adapter;
     ArrayAdapter<CharSequence> einheit_adapter;
     ArrayAdapter<CharSequence> wirkdauer_adapter;
-    ArrayAdapter<CharSequence> wirkfläche_adapter;
+    ArrayAdapter<CharSequence> wirkflaeche_adapter;
     ArrayAdapter<CharSequence> verwMenge_adapter;
     ArrayAdapter<CharSequence> freisetz_adapter;
     ArrayAdapter<CharSequence> anwendungsbereich_adapter;
@@ -61,19 +59,34 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     ArrayAdapter<CharSequence> PROC_adapter;
     ArrayAdapter<CharSequence> material_adapter;
     ArrayAdapter<CharSequence> luftversorg_adapter;
-    ArrayAdapter<CharSequence> häufigk_adapter;
+    ArrayAdapter<CharSequence> haeufigk_adapter;
     ArrayAdapter<CharSequence> staubung_adapter;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
 
+        spinnerNameList.clear();
         spinnerNameList.add("Anlage_spinner");
         spinnerNameList.add("Einheit_spinner");
+        spinnerNameList.add("Verfahren_spinner");
+        spinnerNameList.add("Anwendungsbereich_spinner");
+        spinnerNameList.add("Produktkateg_spinner");
+        spinnerNameList.add("Material_spinner");
+        spinnerNameList.add("PROC_spinner");
         spinnerNameList.add("Wirkdauer_spinner");
+        spinnerNameList.add("Wirkflaeche_spinner");
+        spinnerNameList.add("VerwMenge_spinner");
+        spinnerNameList.add("Freisetz_spinner");
+        spinnerNameList.add("Luftversorg_spinner");
+        spinnerNameList.add("Haeufigk_spinner");
+        spinnerNameList.add("Staubung_spinner");
 
 
+
+        
         anlage_spinner = findViewById(R.id.Anlage_spinner);
         anlage_adapter = ArrayAdapter.createFromResource(this,
                 R.array.anlagen_array, android.R.layout.simple_spinner_item);
@@ -92,11 +105,11 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         wirkdauer_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         wirkdauer_spinner.setAdapter(wirkdauer_adapter);
 
-        wirkfläche_spinner = findViewById(R.id.Wirkfläche_spinner);
-        wirkfläche_adapter = ArrayAdapter.createFromResource(this,
-                R.array.wirkfläche_array, android.R.layout.simple_spinner_item);
-        wirkfläche_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        wirkfläche_spinner.setAdapter(wirkfläche_adapter);
+        wirkflaeche_spinner = findViewById(R.id.Wirkflaeche_spinner);
+        wirkflaeche_adapter = ArrayAdapter.createFromResource(this,
+                R.array.wirkflaeche_array, android.R.layout.simple_spinner_item);
+        wirkflaeche_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        wirkflaeche_spinner.setAdapter(wirkflaeche_adapter);
 
         verwMenge_spinner = findViewById(R.id.VerwMenge_spinner);
         verwMenge_adapter = ArrayAdapter.createFromResource(this,
@@ -146,11 +159,11 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         luftversorg_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         luftversorg_spinner.setAdapter(luftversorg_adapter);
 
-        häufigk_spinner = findViewById(R.id.Häufigk_spinner);
-        häufigk_adapter = ArrayAdapter.createFromResource(this,
-                R.array.häufigk_array, android.R.layout.simple_spinner_item);
-        häufigk_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        häufigk_spinner.setAdapter(häufigk_adapter);
+        haeufigk_spinner = findViewById(R.id.Haeufigk_spinner);
+        haeufigk_adapter = ArrayAdapter.createFromResource(this,
+                R.array.haeufigk_array, android.R.layout.simple_spinner_item);
+        haeufigk_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        haeufigk_spinner.setAdapter(haeufigk_adapter);
 
         staubung_spinner = findViewById(R.id.Staubung_spinner);
         staubung_adapter = ArrayAdapter.createFromResource(this,
@@ -242,7 +255,6 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
                 for(int i = 0; i < spinnerNameList.size(); i++){
                     builder.appendQueryParameter(spinnerNameList.get(i), spinnerElements.get(i));
                 }
-
                 String query = builder.build().getEncodedQuery();
                 OutputStream os = conn.getOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));

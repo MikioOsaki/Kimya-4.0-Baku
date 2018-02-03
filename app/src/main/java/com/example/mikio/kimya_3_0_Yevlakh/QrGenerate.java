@@ -149,12 +149,9 @@ public class QrGenerate extends AppCompatActivity {
 
             Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
             bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
-            //setting bitmap to image view
             ImageView myImage = (ImageView) findViewById(R.id.imageView1);
             myImage.setImageBitmap(bitmap);
 
-
-            //String path = Environment.getExternalStorageDirectory().toString();
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
             String qrCodeName = getIntent().getExtras().getString("substanceName");
