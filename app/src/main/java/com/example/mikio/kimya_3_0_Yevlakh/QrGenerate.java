@@ -47,24 +47,24 @@ public class QrGenerate extends AppCompatActivity {
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
-                Toast.makeText(getApplicationContext(), "Permission to save Files already granted", Toast.LENGTH_LONG).show();
-
-            } else {
+                //App läuft normal weiter.
+            }
+            else {
                 requestPermission();
             }
         }
 
         String qrCodeName = getIntent().getExtras().getString("substanceName");
-        String qrCodeData = getIntent().getExtras().getString("substanceCas");
+        String qrCodeData = getIntent().getExtras().getString("substanceID");
         TextView myText = (TextView) findViewById(R.id.qrInput);
-        myText.setText("Sie wollen einen Qr Code für den Stoff "+qrCodeName+", mit dem Inhalt "+qrCodeData+" Erstellen");
+        myText.setText("Sie wollen einen Qr-Code für den Stoff\n"+qrCodeName+" erstellen.\nDer Qr-Code wird die Stoff ID "+qrCodeData+" enthalten.");
 
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        Intent iG = new Intent(this, QrGenSucheActivity.class);
+        startActivity(iG);
         finish();
     }
 

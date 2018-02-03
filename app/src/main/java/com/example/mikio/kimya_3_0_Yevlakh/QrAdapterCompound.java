@@ -1,6 +1,5 @@
 package com.example.mikio.kimya_3_0_Yevlakh;
 
-
 import android.content.Context;
 import android.content.Intent;
 
@@ -10,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import java.util.Collections;
 import java.util.List;
@@ -96,7 +93,6 @@ public class QrAdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHol
                     }
                 }
             }
-            Toast.makeText(clickedRow.getContext(), "Im Suchergebnis war keine URL enthalten :(", Toast.LENGTH_LONG).show();
         }
     }
 }
