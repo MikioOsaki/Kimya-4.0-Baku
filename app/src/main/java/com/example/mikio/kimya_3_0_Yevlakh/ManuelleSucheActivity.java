@@ -189,8 +189,12 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
+                Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query (no rows)", Toast.LENGTH_LONG).show();
+            }
+            else if(result.equals("")){
                 Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
-            }else{
+            }
+            else{
 
                 try {
 
@@ -222,8 +226,8 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     // You to understand what actually error is and handle it appropriately
-                    Toast.makeText(ManuelleSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(ManuelleSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ManuelleSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ManuelleSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
                 }
 
             }
