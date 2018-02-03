@@ -3,13 +3,10 @@
     package="com.example.mikio.kimya_3_0_Yevlakh">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- Permissions for QR Scanner -->
     <uses-permission android:name="android.permission.CAMERA" />
-
     <!-- Permissions for QR Generator -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -30,12 +27,13 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".FormActivity"
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name">
+        </activity>
+    <activity android:name=".FormActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
         <activity android:name=".ScanActivity" />
