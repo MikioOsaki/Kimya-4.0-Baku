@@ -2,6 +2,7 @@ package com.example.mikio.kimya_3_0_Yevlakh;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
@@ -70,7 +71,6 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return data.size();
     }
 
-
     class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private View rootView;
         private TextView textCompoundName;
@@ -106,6 +106,7 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Toast.makeText(clickedRow.getContext(), "Im Suchergebnis war keine URL enthalten :(", Toast.LENGTH_LONG).show();
         }
     }
+
     // Create class AsyncFetch
     private class AsyncFetch extends AsyncTask<String, String, String> {
 
@@ -120,7 +121,6 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
         }
 
         @Override
@@ -191,8 +191,6 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
             } finally {
                 conn.disconnect();
             }
-
-
         }
 
         @Override

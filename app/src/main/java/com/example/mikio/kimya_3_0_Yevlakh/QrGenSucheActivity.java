@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManuelleSucheActivity extends AppCompatActivity {
+public class QrGenSucheActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
@@ -38,20 +38,20 @@ public class ManuelleSucheActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
-     }
+    }
 
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private RecyclerView mRVCompound;
-    private AdapterCompound mAdapter;
+    private QrAdapterCompound mAdapter;
 
     SearchView searchView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manuelle_suche);
+        setContentView(R.layout.activity_qr_gen_suche);
     }
 
     @Override
@@ -62,12 +62,12 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
         // Get Search item from action bar and Get Search service
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchManager searchManager = (SearchManager) ManuelleSucheActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) QrGenSucheActivity.this.getSystemService(Context.SEARCH_SERVICE);
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
         }
         if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(ManuelleSucheActivity.this.getComponentName()));
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(QrGenSucheActivity.this.getComponentName()));
             searchView.setIconified(false);
         }
 
@@ -84,13 +84,13 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                 searchView.clearFocus();
             }
             new AsyncFetch(query).execute();
-        }
+    }
     }
 
     // Create class AsyncFetch
     private class AsyncFetch extends AsyncTask<String, String, String> {
 
-        ProgressDialog pdLoading = new ProgressDialog(ManuelleSucheActivity.this);
+        ProgressDialog pdLoading = new ProgressDialog(QrGenSucheActivity.this);
         HttpURLConnection conn;
         URL url = null;
         String searchQuery;
@@ -189,7 +189,7 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
-                Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
+                Toast.makeText(QrGenSucheActivity.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
             }else{
 
                 try {
@@ -215,15 +215,15 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVCompound = (RecyclerView) findViewById(R.id.CompoundResultList);
-                    mAdapter = new AdapterCompound(ManuelleSucheActivity.this, data);
+                    mRVCompound = (RecyclerView) findViewById(R.id.QrCompoundResultList);
+                    mAdapter = new QrAdapterCompound(QrGenSucheActivity.this, data);
                     mRVCompound.setAdapter(mAdapter);
-                    mRVCompound.setLayoutManager(new LinearLayoutManager(ManuelleSucheActivity.this));
+                    mRVCompound.setLayoutManager(new LinearLayoutManager(QrGenSucheActivity.this));
 
                 } catch (JSONException e) {
                     // You to understand what actually error is and handle it appropriately
-                    Toast.makeText(ManuelleSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(ManuelleSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(QrGenSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(QrGenSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
                 }
 
             }

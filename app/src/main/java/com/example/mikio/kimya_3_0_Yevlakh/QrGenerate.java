@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -37,26 +39,32 @@ public class QrGenerate extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrgenerate);
-
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
-                Toast.makeText(getApplicationContext(), "Permission to save Files already granted", Toast.LENGTH_LONG).show();
-
-            } else {
+                //App läuft normal weiter.
+            }
+            else {
                 requestPermission();
             }
         }
+
+        String qrCodeName = getIntent().getExtras().getString("substanceName");
+        String qrCodeData = getIntent().getExtras().getString("substanceID");
+        TextView myText = (TextView) findViewById(R.id.qrInput);
+        myText.setText("Sie wollen einen Qr-Code für den Stoff\n"+qrCodeName+" erstellen.\nDer Qr-Code wird die Stoff ID "+qrCodeData+" enthalten.");
+
     }
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+        Intent iG = new Intent(this, QrGenSucheActivity.class);
+        startActivity(iG);
         finish();
     }
 
@@ -91,6 +99,12 @@ public class QrGenerate extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
     public void qrGenerator(View v){
         try {
             //setting size of qr code
@@ -102,8 +116,9 @@ public class QrGenerate extends AppCompatActivity {
             int height = point.y;
             int smallestDimension = width < height ? width : height;
 
-            EditText qrInput = (EditText) findViewById(R.id.qrInput);
-            String qrCodeData = qrInput.getText().toString();
+            //substanceCas wird als Inhalt des QR Codes übegeben
+            String qrCodeData = getIntent().getExtras().getString("substanceID");
+            //String qrCodeData = context.;
             //setting parameters for qr code
             String charset = "UTF-8"; // or "ISO-8859-1"
             Map<EncodeHintType, ErrorCorrectionLevel> hintMap =new HashMap<EncodeHintType, ErrorCorrectionLevel>();
@@ -142,14 +157,16 @@ public class QrGenerate extends AppCompatActivity {
             //String path = Environment.getExternalStorageDirectory().toString();
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
-            File file = new File(path, "qrcode.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
+            String qrCodeName = getIntent().getExtras().getString("substanceName");
+            File file = new File(path, qrCodeName+" QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
             fOut = new FileOutputStream(file);
-
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate
             fOut.flush(); // Not really required
             fOut.close(); // do not forget to close the stream
 
             MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+
+            Toast.makeText(this, "Sie haben den QR-Code für den Stoff "+qrCodeName+" erstellt. Er ist auf dem internen Speicher Ihres Handys zu finden.", Toast.LENGTH_LONG).show();
         }
         catch (Exception er){
             Log.e("QrGenerate",er.getMessage());
