@@ -14,9 +14,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +55,7 @@ public class QrGenerate extends AppCompatActivity {
         String qrCodeName = getIntent().getExtras().getString("substanceName");
         String qrCodeData = getIntent().getExtras().getString("substanceID");
         TextView myText = (TextView) findViewById(R.id.qrInput);
-        myText.setText("Sie wollen einen Qr-Code für den Stoff\n"+qrCodeName+" erstellen.\nDer Qr-Code wird die Stoff ID "+qrCodeData+" enthalten.");
+        myText.setText("Sie wollen einen Qr-Code für den Stoff\n"+qrCodeName+" erstellen.\nDer QR-Code wird die Stoff ID "+qrCodeData+" enthalten.");
 
     }
 

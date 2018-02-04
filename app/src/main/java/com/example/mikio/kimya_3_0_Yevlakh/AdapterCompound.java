@@ -1,8 +1,6 @@
 package com.example.mikio.kimya_3_0_Yevlakh;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
