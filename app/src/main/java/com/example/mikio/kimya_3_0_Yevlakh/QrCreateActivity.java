@@ -14,9 +14,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +33,7 @@ import java.util.Map;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
-public class QrGenerate extends AppCompatActivity {
+public class QrCreateActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 
@@ -48,8 +46,7 @@ public class QrGenerate extends AppCompatActivity {
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
                 //App läuft normal weiter.
-            }
-            else {
+            } else {
                 requestPermission();
             }
         }
@@ -57,19 +54,21 @@ public class QrGenerate extends AppCompatActivity {
         String qrCodeName = getIntent().getExtras().getString("substanceName");
         String qrCodeData = getIntent().getExtras().getString("substanceID");
         TextView myText = (TextView) findViewById(R.id.qrInput);
-        myText.setText("Sie wollen einen Qr-Code für den Stoff\n"+qrCodeName+" erstellen.\nDer Qr-Code wird die Stoff ID "+qrCodeData+" enthalten.");
+        myText.setText("Sie wollen einen Qr-Code für den Stoff\n" + qrCodeName + " erstellen.\nDer QR-Code wird die Stoff ID " + qrCodeData + " enthalten.");
 
     }
 
     @Override
     public void onBackPressed() {
-        Intent iG = new Intent(this, QrGenSucheActivity.class);
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
+        Intent iG = new Intent(this, QrGenerateActivity.class);
         startActivity(iG);
         finish();
     }
 
     private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(QrGenerate.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int result = ContextCompat.checkSelfPermission(QrCreateActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (result == PackageManager.PERMISSION_GRANTED) {
             return true;
         } else {
@@ -79,10 +78,10 @@ public class QrGenerate extends AppCompatActivity {
 
     private void requestPermission() {
 
-        if (ActivityCompat.shouldShowRequestPermissionRationale(QrGenerate.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText(QrGenerate.this, "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+        if (ActivityCompat.shouldShowRequestPermissionRationale(QrCreateActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            Toast.makeText(QrCreateActivity.this, "Sie müssen den Zugriff erlauben um diese Funktion nutzen zu können.", Toast.LENGTH_LONG).show();
         } else {
-            ActivityCompat.requestPermissions(QrGenerate.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(QrCreateActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
     }
 
@@ -91,9 +90,9 @@ public class QrGenerate extends AppCompatActivity {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.e("value", "Permission Granted, Now you can use local drive .");
+                    Log.e("value", "Zugriff erteilt");
                 } else {
-                    Log.e("value", "Permission Denied, You cannot use local drive .");
+                    Log.e("value", "Zugriff verweigert");
                 }
                 break;
         }
@@ -105,7 +104,8 @@ public class QrGenerate extends AppCompatActivity {
         super.onStart();
 
     }
-    public void qrGenerator(View v){
+
+    public void qrGenerator(View v) {
         try {
             //setting size of qr code
             WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -121,16 +121,16 @@ public class QrGenerate extends AppCompatActivity {
             //String qrCodeData = context.;
             //setting parameters for qr code
             String charset = "UTF-8"; // or "ISO-8859-1"
-            Map<EncodeHintType, ErrorCorrectionLevel> hintMap =new HashMap<EncodeHintType, ErrorCorrectionLevel>();
+            Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             createQRCode(qrCodeData, charset, hintMap, smallestDimension, smallestDimension);
 
         } catch (Exception ex) {
-            Log.e("QrGenerate",ex.getMessage());
+            Log.e("QrGenerate", ex.getMessage());
         }
     }
 
-    public  void createQRCode(String qrCodeData, String charset, Map hintMap, int qrCodeheight, int qrCodewidth){
+    public void createQRCode(String qrCodeData, String charset, Map hintMap, int qrCodeheight, int qrCodewidth) {
 
         try {
             //generating qr code in bitmatrix type
@@ -155,18 +155,17 @@ public class QrGenerate extends AppCompatActivity {
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
             String qrCodeName = getIntent().getExtras().getString("substanceName");
-            File file = new File(path, qrCodeName+" QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
+            File file = new File(path, qrCodeName + " QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
             fOut = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate
             fOut.flush(); // Not really required
             fOut.close(); // do not forget to close the stream
 
-            MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+            MediaStore.Images.Media.insertImage(getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
 
-            Toast.makeText(this, "Sie haben den QR-Code für den Stoff "+qrCodeName+" erstellt. Er ist auf dem internen Speicher Ihres Handys zu finden.", Toast.LENGTH_LONG).show();
-        }
-        catch (Exception er){
-            Log.e("QrGenerate",er.getMessage());
+            Toast.makeText(this, "Sie haben den QR-Code für den Stoff " + qrCodeName + " erstellt. Er ist auf Ihrem Smartphone auf dem folgenden Pfad hinterlegt:\n" + path, Toast.LENGTH_LONG).show();
+        } catch (Exception er) {
+            Log.e("QrGenerate", er.getMessage());
         }
 
     }

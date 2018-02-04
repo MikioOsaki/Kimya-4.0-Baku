@@ -14,9 +14,11 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -30,28 +32,29 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManuelleSucheActivity extends AppCompatActivity {
+public class QrGenerateActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
-     }
+    }
 
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private RecyclerView mRVCompound;
-    private AdapterCompound mAdapter;
+    private QrAdapterCompound mAdapter;
 
     SearchView searchView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_manuelle_suche);
+        setContentView(R.layout.activity_qr_gen_suche);
     }
 
     @Override
@@ -62,12 +65,13 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
         // Get Search item from action bar and Get Search service
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchManager searchManager = (SearchManager) ManuelleSucheActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) QrGenerateActivity.this.getSystemService(Context.SEARCH_SERVICE);
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
+            searchView.setQueryHint("Suche (mind. 4 Buchstaben)");
         }
         if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(ManuelleSucheActivity.this.getComponentName()));
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(QrGenerateActivity.this.getComponentName()));
             searchView.setIconified(false);
         }
 
@@ -90,13 +94,13 @@ public class ManuelleSucheActivity extends AppCompatActivity {
     // Create class AsyncFetch
     private class AsyncFetch extends AsyncTask<String, String, String> {
 
-        ProgressDialog pdLoading = new ProgressDialog(ManuelleSucheActivity.this);
+        ProgressDialog pdLoading = new ProgressDialog(QrGenerateActivity.this);
         HttpURLConnection conn;
         URL url = null;
         String searchQuery;
 
-        public AsyncFetch(String searchQuery){
-            this.searchQuery=searchQuery;
+        public AsyncFetch(String searchQuery) {
+            this.searchQuery = searchQuery;
         }
 
         @Override
@@ -169,7 +173,7 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                     return (result.toString());
 
                 } else {
-                    return("Connection error");
+                    return ("Connection error");
                 }
 
             } catch (IOException e) {
@@ -185,16 +189,14 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
             //this method will be running on UI thread
             pdLoading.dismiss();
-            List<DataCompound> data=new ArrayList<>();
+            List<SubstanceData> data = new ArrayList<>();
 
             pdLoading.dismiss();
-            if(result.equals("no rows")) {
-                Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query (no rows)", Toast.LENGTH_LONG).show();
-            }
-            else if(result.equals("")){
-                Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
-            }
-            else{
+            if (result.equals("no rows")) {
+                Toast.makeText(QrGenerateActivity.this, "Keine Ergebnisse für die angegebene Anfrage (kein Eintrag gefunden)", Toast.LENGTH_LONG).show();
+            } else if (result.equals("")) {
+                Toast.makeText(QrGenerateActivity.this, "Keine Ergebnisse für die angegebene Anfrage", Toast.LENGTH_LONG).show();
+            } else {
 
                 try {
 
@@ -209,25 +211,25 @@ public class ManuelleSucheActivity extends AppCompatActivity {
                         int id = jsonData.getInt("id");
                         String reach_nr = jsonData.getString("reach_nr");
 
-                        DataCompound dataCompound = new DataCompound(
+                        SubstanceData substanceData = new SubstanceData(
                                 name,
                                 cas,
                                 eg,
                                 id,
                                 reach_nr);
-                        data.add(dataCompound);
+                        data.add(substanceData);
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVCompound = (RecyclerView) findViewById(R.id.CompoundResultList);
-                    mAdapter = new AdapterCompound(ManuelleSucheActivity.this, data);
+                    mRVCompound = (RecyclerView) findViewById(R.id.QrCompoundResultList);
+                    mAdapter = new QrAdapterCompound(QrGenerateActivity.this, data);
                     mRVCompound.setAdapter(mAdapter);
-                    mRVCompound.setLayoutManager(new LinearLayoutManager(ManuelleSucheActivity.this));
+                    mRVCompound.setLayoutManager(new LinearLayoutManager(QrGenerateActivity.this));
 
                 } catch (JSONException e) {
                     // You to understand what actually error is and handle it appropriately
-                    //Toast.makeText(ManuelleSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                    //Toast.makeText(ManuelleSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(QrGenerateActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(QrGenerateActivity.this, result.toString(), Toast.LENGTH_LONG).show();
                 }
 
             }

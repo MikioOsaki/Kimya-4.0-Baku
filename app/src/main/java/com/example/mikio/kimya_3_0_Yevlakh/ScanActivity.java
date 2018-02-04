@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,33 +57,34 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
     }
 
     private boolean checkPermission() {
-        return ( ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA ) == PackageManager.PERMISSION_GRANTED);
+        return (ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA) == PackageManager.PERMISSION_GRANTED);
     }
 
     private void requestPermission() {
         ActivityCompat.requestPermissions(this, new String[]{CAMERA}, REQUEST_CAMERA);
     }
 
-    //TODO ask for Permission below android 6.0 (requestPermissions  .. Dialog)
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CAMERA:
                 if (grantResults.length > 0) {
 
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if (cameraAccepted){
-                        Toast.makeText(getApplicationContext(), "Permission Granted, Now you can access camera", Toast.LENGTH_LONG).show();
-                    }else {
-                        Toast.makeText(getApplicationContext(), "Permission Denied, You cannot access and camera", Toast.LENGTH_LONG).show();
+                    if (cameraAccepted) {
+                        Toast.makeText(getApplicationContext(), "Zugriff erteilt", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Zugriff verweigert", Toast.LENGTH_LONG).show();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (shouldShowRequestPermissionRationale(CAMERA)) {
-                                showMessageOKCancel("You need to allow access to both the permissions",
+                                showMessageOKCancel("Sie müssen den Zugriff erlauben um diese Funktion nutzen zu können.",
                                         new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -103,7 +103,6 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         }
     }
 
-
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new android.support.v7.app.AlertDialog.Builder(ScanActivity.this)
                 .setMessage(message)
@@ -120,7 +119,7 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
-                if(mScannerView == null) {
+                if (mScannerView == null) {
                     mScannerView = new ZXingScannerView(this);
                     setContentView(mScannerView);
                 }
@@ -144,13 +143,6 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         final String result = rawResult.getText();
         Log.d("QRCodeScanner", rawResult.getText());
         Log.d("QRCodeScanner", rawResult.getBarcodeFormat().toString());
-
-        //TODO statt string direkt übergeben, CAS Nummer Scannen und damit die passende
-        //URL aus der DB holen und die dann dem browserIntent übergeben
-
-        ///Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(result));
-        ///"result" ist der Inhalt des QR codes
-        ///startActivity(browserIntent);
         new AsyncFetch(result).execute();
     }
 

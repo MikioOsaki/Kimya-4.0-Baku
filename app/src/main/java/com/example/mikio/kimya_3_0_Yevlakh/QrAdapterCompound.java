@@ -17,10 +17,10 @@ public class QrAdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private Context context;
     private LayoutInflater inflater;
-    List<DataCompound> data = Collections.emptyList();
+    List<SubstanceData> data = Collections.emptyList();
 
     // create constructor to initialize context and data sent from MainActivity
-    public QrAdapterCompound(Context context, List<DataCompound> data) {
+    public QrAdapterCompound(Context context, List<SubstanceData> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
@@ -40,7 +40,7 @@ public class QrAdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
-        DataCompound current = data.get(position);
+        SubstanceData current = data.get(position);
         myHolder.textCompoundName.setText(current.name);
         myHolder.textEGNR.setText("EG-NR: " + current.eg);
         myHolder.textCASNR.setText("CAS-NR: " + current.cas);
@@ -78,15 +78,15 @@ public class QrAdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHol
         public void onClick(View clickedRow) {
             int position = (int) clickedRow.getTag();
             if (data != null && data.size() >= position) {
-                DataCompound dataCompound = data.get(position);
-                if (dataCompound != null) {
-                    String substanceCas = dataCompound.cas;
+                SubstanceData substanceData = data.get(position);
+                if (substanceData != null) {
+                    String substanceCas = substanceData.cas;
                     if (substanceCas != null && !substanceCas.isEmpty()) {
                         final Intent iG;
-                        iG = new Intent(context, QrGenerate.class);
-                        String substanceIdString = String.valueOf(dataCompound.id);
-                        iG.putExtra("substanceCas", dataCompound.cas);
-                        iG.putExtra("substanceName", dataCompound.name);
+                        iG = new Intent(context, QrCreateActivity.class);
+                        String substanceIdString = String.valueOf(substanceData.id);
+                        iG.putExtra("substanceCas", substanceData.cas);
+                        iG.putExtra("substanceName", substanceData.name);
                         iG.putExtra("substanceID", substanceIdString);
 
                         context.startActivity(iG);

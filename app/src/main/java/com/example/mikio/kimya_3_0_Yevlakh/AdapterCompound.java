@@ -1,8 +1,6 @@
 package com.example.mikio.kimya_3_0_Yevlakh;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
@@ -32,10 +30,10 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static final int READ_TIMEOUT = 15000;
     private Context context;
     private LayoutInflater inflater;
-    List<DataCompound> data = Collections.emptyList();
+    List<SubstanceData> data = Collections.emptyList();
 
     // create constructor to initialize context and data sent from MainActivity
-    public AdapterCompound(Context context, List<DataCompound> data) {
+    public AdapterCompound(Context context, List<SubstanceData> data) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
@@ -55,7 +53,7 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
-        DataCompound current = data.get(position);
+        SubstanceData current = data.get(position);
         myHolder.textCompoundName.setText(current.name);
         myHolder.textEGNR.setText("EG-NR: " + current.eg);
         myHolder.textCASNR.setText("CAS-NR: " + current.cas);
@@ -93,9 +91,9 @@ public class AdapterCompound extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public void onClick(View clickedRow) {
             int position = (int) clickedRow.getTag();
             if (data != null && data.size() >= position) {
-                DataCompound dataCompound = data.get(position);
-                if (dataCompound != null) {
-                    int substanceId = dataCompound.id;
+                SubstanceData substanceData = data.get(position);
+                if (substanceData != null) {
+                    int substanceId = substanceData.id;
                     String substanceIdString = String.valueOf(substanceId);
                     if (substanceIdString != null && !substanceIdString.isEmpty()) {
                         new AdapterCompound.AsyncFetch(substanceIdString).execute();

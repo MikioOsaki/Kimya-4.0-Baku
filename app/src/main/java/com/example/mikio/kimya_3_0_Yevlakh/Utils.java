@@ -1,13 +1,10 @@
-
 package com.example.mikio.kimya_3_0_Yevlakh;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.Spinner;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.net.Uri;
-        import android.widget.Spinner;
-        import android.widget.TextView;
-        import android.widget.Toast;
 
 public class Utils {
 

@@ -1,15 +1,10 @@
 package com.example.mikio.kimya_3_0_Yevlakh;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-import java.io.File;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,6 +32,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonQRSearch.setOnClickListener(this);
         buttonForm.setOnClickListener(this);
         buttonQRGenerate.setOnClickListener(this);
+
+        try {
+            String isUser = getIntent().getExtras().getString("checkUser");
+
+            if (isUser.equals("isUser")) {
+                buttonForm.setVisibility(View.GONE);
+                buttonQRGenerate.setVisibility(View.GONE);
+            }
+        } catch (Exception E) {
+            return;
+        }
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
+        Intent iStart = new Intent(this, StartActivity.class);
+        startActivity(iStart);
+        finish();
     }
 
     @Override
@@ -58,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonManuelleSuche:
-                Intent iM = new Intent(this, ManuelleSucheActivity.class);
+                Intent iM = new Intent(this, SubstanceSearchActivity.class);
                 startActivity(iM);
                 finish();
                 break;
@@ -73,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.buttonQRGenerate:
-                Intent iG=new Intent(this,QrGenSucheActivity.class);
+                Intent iG = new Intent(this, QrGenerateActivity.class);
                 startActivity(iG);
                 finish();
                 break;

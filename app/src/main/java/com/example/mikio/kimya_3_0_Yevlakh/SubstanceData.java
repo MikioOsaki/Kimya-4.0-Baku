@@ -1,6 +1,6 @@
 package com.example.mikio.kimya_3_0_Yevlakh;
 
-public class DataCompound {
+public class SubstanceData {
 
     public final String name;
     public final String cas;
@@ -8,7 +8,7 @@ public class DataCompound {
     public final int id;
     public final String reach_nr;
 
-    public DataCompound(String name, String cas, String eg, int id, String reach_nr) {
+    public SubstanceData(String name, String cas, String eg, int id, String reach_nr) {
         this.name = name;
         this.cas = cas;
         this.eg = eg;

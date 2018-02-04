@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- Permissions for QR Generator -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -19,6 +20,9 @@
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".MainActivity" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <!-- nach https://www.bignerdranch.com/blog/splash-screens-the-right-way/ hinzugefügt -->
         <activity
@@ -27,22 +31,25 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:label="@string/app_name">
-        </activity>
-    <activity android:name=".FormActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:label="@string/app_name">
-        </activity>
-
-        <activity android:name=".ScanActivity" android:label="@string/app_name" />
-        <activity android:name=".QrGenerate"  />
-
         <activity
-            android:name=".ManuelleSucheActivity"
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".FormActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".ScanActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".QrCreateActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".SubstanceSearchActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop">
             <intent-filter>
@@ -55,9 +62,8 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity
-            android:name=".QrGenSucheActivity"
+            android:name=".QrGenerateActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop">
             <intent-filter>
@@ -65,11 +71,17 @@
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/app_name" />
+
     </application>
 
 </manifest>
