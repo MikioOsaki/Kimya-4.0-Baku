@@ -1,29 +1,29 @@
 package com.example.mikio.kimya_3_0_Yevlakh;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.net.Uri;
-        import android.os.AsyncTask;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.ArrayAdapter;
-        import android.widget.Button;
-        import android.widget.CheckBox;
-        import android.widget.Spinner;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Spinner;
 
-        import java.io.BufferedReader;
-        import java.io.BufferedWriter;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.io.OutputStream;
-        import java.io.OutputStreamWriter;
-        import java.net.HttpURLConnection;
-        import java.net.MalformedURLException;
-        import java.net.URL;
-        import java.util.ArrayList;
-        import java.util.List;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FormActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,7 +61,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     ArrayAdapter<CharSequence> luftversorg_adapter;
     ArrayAdapter<CharSequence> haeufigk_adapter;
     ArrayAdapter<CharSequence> staubung_adapter;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +85,6 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         spinnerNameList.add("Staubung_spinner");
 
 
-
-        
         anlage_spinner = findViewById(R.id.Anlage_spinner);
         anlage_adapter = ArrayAdapter.createFromResource(this,
                 R.array.anlagen_array, android.R.layout.simple_spinner_item);
@@ -198,7 +196,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
                 Spinner tempSpinner = null;
                 spinnerItemsList.clear();
 
-                for(int i = 0; i < spinnerNameList.size(); i++){
+                for (int i = 0; i < spinnerNameList.size(); i++) {
                     int resID = getResources().getIdentifier(spinnerNameList.get(i), "id", getPackageName());
                     tempSpinner = (Spinner) findViewById(resID);
                     spinnerItemsList.add(Utils.getSpinnerSelection(tempSpinner));
@@ -212,6 +210,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
     // Create class AsyncFetch
     private class AsyncFetch extends AsyncTask<String, String, String> {
 
@@ -254,7 +253,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
                 // ADD PARAMETER to our above url
                 //TODO: here is the parameter adding point (TO URL!)
                 Uri.Builder builder = new Uri.Builder();
-                for(int i = 0; i < spinnerNameList.size(); i++){
+                for (int i = 0; i < spinnerNameList.size(); i++) {
                     builder.appendQueryParameter(spinnerNameList.get(i), spinnerElements.get(i));
                 }
                 String query = builder.build().getEncodedQuery();

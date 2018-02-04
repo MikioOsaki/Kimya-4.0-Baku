@@ -11,17 +11,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Thread timer=new Thread()
-        {
+        Thread timer = new Thread() {
             public void run() {
                 try {
                     sleep(2700);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
-                finally
-                {
-                    Intent i=new Intent(SplashActivity.this,StartActivity.class);
+                } finally {
+                    Intent i = new Intent(SplashActivity.this, StartActivity.class);
                     finish();
                     startActivity(i);
                 }

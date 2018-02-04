@@ -45,7 +45,9 @@
         <activity
             android:name=".ScanActivity"
             android:label="@string/app_name" />
-        <activity android:name=".QrCreateActivity" />
+        <activity
+            android:name=".QrCreateActivity"
+            android:label="@string/app_name" />
         <activity
             android:name=".SubstanceSearchActivity"
             android:label="@string/app_name"

@@ -29,20 +29,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void checkLoginData(View v) {
-        username = (EditText)findViewById(R.id.input_username);
-        password = (EditText)findViewById(R.id.input_password);
+        username = (EditText) findViewById(R.id.input_username);
+        password = (EditText) findViewById(R.id.input_password);
 
         String usernameContent = username.getText().toString();
         String passwordContent = password.getText().toString();
 
 
-        if (usernameContent.equals("Admin") && passwordContent.equals("passwort")){
+        if (usernameContent.equals("Admin") && passwordContent.equals("passwort")) {
             Intent i = new Intent(this, MainActivity.class);
             i.putExtra("checkUser", "isAdmin");
             startActivity(i);
             finish();
-        }
-        else {
+        } else {
             Toast.makeText(this, "Login fehlgeschlafen. Benutzername oder Passwort falsch.", Toast.LENGTH_SHORT).show();
         }
     }

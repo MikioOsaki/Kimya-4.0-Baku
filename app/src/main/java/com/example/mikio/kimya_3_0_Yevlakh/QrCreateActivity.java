@@ -46,8 +46,7 @@ public class QrCreateActivity extends AppCompatActivity {
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
                 //App läuft normal weiter.
-            }
-            else {
+            } else {
                 requestPermission();
             }
         }
@@ -55,7 +54,7 @@ public class QrCreateActivity extends AppCompatActivity {
         String qrCodeName = getIntent().getExtras().getString("substanceName");
         String qrCodeData = getIntent().getExtras().getString("substanceID");
         TextView myText = (TextView) findViewById(R.id.qrInput);
-        myText.setText("Sie wollen einen Qr-Code für den Stoff\n"+qrCodeName+" erstellen.\nDer QR-Code wird die Stoff ID "+qrCodeData+" enthalten.");
+        myText.setText("Sie wollen einen Qr-Code für den Stoff\n" + qrCodeName + " erstellen.\nDer QR-Code wird die Stoff ID " + qrCodeData + " enthalten.");
 
     }
 
@@ -105,7 +104,8 @@ public class QrCreateActivity extends AppCompatActivity {
         super.onStart();
 
     }
-    public void qrGenerator(View v){
+
+    public void qrGenerator(View v) {
         try {
             //setting size of qr code
             WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
@@ -121,16 +121,16 @@ public class QrCreateActivity extends AppCompatActivity {
             //String qrCodeData = context.;
             //setting parameters for qr code
             String charset = "UTF-8"; // or "ISO-8859-1"
-            Map<EncodeHintType, ErrorCorrectionLevel> hintMap =new HashMap<EncodeHintType, ErrorCorrectionLevel>();
+            Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             createQRCode(qrCodeData, charset, hintMap, smallestDimension, smallestDimension);
 
         } catch (Exception ex) {
-            Log.e("QrGenerate",ex.getMessage());
+            Log.e("QrGenerate", ex.getMessage());
         }
     }
 
-    public  void createQRCode(String qrCodeData, String charset, Map hintMap, int qrCodeheight, int qrCodewidth){
+    public void createQRCode(String qrCodeData, String charset, Map hintMap, int qrCodeheight, int qrCodewidth) {
 
         try {
             //generating qr code in bitmatrix type
@@ -155,18 +155,17 @@ public class QrCreateActivity extends AppCompatActivity {
             String path = Environment.getExternalStorageDirectory().toString();
             OutputStream fOut;
             String qrCodeName = getIntent().getExtras().getString("substanceName");
-            File file = new File(path, qrCodeName+" QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
+            File file = new File(path, qrCodeName + " QR-Code.jpg"); // the File to save , append increasing numeric counter to prevent files from getting overwritten.
             fOut = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate
             fOut.flush(); // Not really required
             fOut.close(); // do not forget to close the stream
 
-            MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
+            MediaStore.Images.Media.insertImage(getContentResolver(), file.getAbsolutePath(), file.getName(), file.getName());
 
-            Toast.makeText(this, "Sie haben den QR-Code für den Stoff "+qrCodeName+" erstellt. Er ist auf Ihrem Smartphone auf dem folgenden Pfad hinterlegt:\n"+path, Toast.LENGTH_LONG).show();
-        }
-        catch (Exception er){
-            Log.e("QrGenerate",er.getMessage());
+            Toast.makeText(this, "Sie haben den QR-Code für den Stoff " + qrCodeName + " erstellt. Er ist auf Ihrem Smartphone auf dem folgenden Pfad hinterlegt:\n" + path, Toast.LENGTH_LONG).show();
+        } catch (Exception er) {
+            Log.e("QrGenerate", er.getMessage());
         }
 
     }

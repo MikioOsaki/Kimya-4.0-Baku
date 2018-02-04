@@ -14,9 +14,11 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class SubstanceSearchActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
-     }
+    }
 
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
@@ -97,8 +99,8 @@ public class SubstanceSearchActivity extends AppCompatActivity {
         URL url = null;
         String searchQuery;
 
-        public AsyncFetch(String searchQuery){
-            this.searchQuery=searchQuery;
+        public AsyncFetch(String searchQuery) {
+            this.searchQuery = searchQuery;
         }
 
         @Override
@@ -171,7 +173,7 @@ public class SubstanceSearchActivity extends AppCompatActivity {
                     return (result.toString());
 
                 } else {
-                    return("Connection error");
+                    return ("Connection error");
                 }
 
             } catch (IOException e) {
@@ -187,16 +189,14 @@ public class SubstanceSearchActivity extends AppCompatActivity {
 
             //this method will be running on UI thread
             pdLoading.dismiss();
-            List<SubstanceData> data=new ArrayList<>();
+            List<SubstanceData> data = new ArrayList<>();
 
             pdLoading.dismiss();
-            if(result.equals("no rows")) {
+            if (result.equals("no rows")) {
                 Toast.makeText(SubstanceSearchActivity.this, "Keine Ergebnisse für die angegebene Anfrage (kein Eintrag gefunden)", Toast.LENGTH_LONG).show();
-            }
-            else if(result.equals("")){
+            } else if (result.equals("")) {
                 Toast.makeText(SubstanceSearchActivity.this, "Keine Ergebnisse für die angegebene Anfrage", Toast.LENGTH_LONG).show();
-            }
-            else{
+            } else {
 
                 try {
 

@@ -36,13 +36,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             String isUser = getIntent().getExtras().getString("checkUser");
 
-            if (isUser.equals("isUser")){
+            if (isUser.equals("isUser")) {
                 buttonForm.setVisibility(View.GONE);
                 buttonQRGenerate.setVisibility(View.GONE);
             }
-        }
-
-        catch (Exception E){
+        } catch (Exception E) {
             return;
         }
 
@@ -71,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStop() {
         super.onStop();
-}
+    }
 
     @Override
     public void onClick(View view) {
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.buttonQRGenerate:
-                Intent iG=new Intent(this,QrGenerateActivity.class);
+                Intent iG = new Intent(this, QrGenerateActivity.class);
                 startActivity(iG);
                 finish();
                 break;
