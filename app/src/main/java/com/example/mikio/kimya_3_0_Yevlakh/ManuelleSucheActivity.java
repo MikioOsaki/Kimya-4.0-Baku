@@ -190,10 +190,10 @@ public class ManuelleSucheActivity extends AppCompatActivity {
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
-                Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query (no rows)", Toast.LENGTH_LONG).show();
+                Toast.makeText(ManuelleSucheActivity.this, "Keine Ergebnisse für die angegebene Anfrage (kein Eintrag gefunden)", Toast.LENGTH_LONG).show();
             }
             else if(result.equals("")){
-                Toast.makeText(ManuelleSucheActivity.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
+                Toast.makeText(ManuelleSucheActivity.this, "Keine Ergebnisse für die angegebene Anfrage", Toast.LENGTH_LONG).show();
             }
             else{
 

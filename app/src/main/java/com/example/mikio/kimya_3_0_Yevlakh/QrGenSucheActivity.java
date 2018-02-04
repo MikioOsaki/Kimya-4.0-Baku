@@ -190,8 +190,14 @@ public class QrGenSucheActivity extends AppCompatActivity {
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
-                Toast.makeText(QrGenSucheActivity.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
-            }else{
+                Toast.makeText(QrGenSucheActivity.this, "Keine Ergebnisse für die angegebene Anfrage (kein Eintrag gefunden)", Toast.LENGTH_LONG).show();
+            }
+            else if(result.equals("")) {
+                Toast.makeText(QrGenSucheActivity.this, "Keine Ergebnisse für die angegebene Anfrage", Toast.LENGTH_LONG).show();
+            }
+
+
+            else{
 
                 try {
 
