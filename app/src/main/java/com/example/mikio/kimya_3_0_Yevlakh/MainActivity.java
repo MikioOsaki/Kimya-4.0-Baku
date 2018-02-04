@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonManuelleSuche:
-                Intent iM = new Intent(this, ManuelleSucheActivity.class);
+                Intent iM = new Intent(this, SubstanceSearchActivity.class);
                 startActivity(iM);
                 finish();
                 break;
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.buttonQRGenerate:
-                Intent iG=new Intent(this,QrGenSucheActivity.class);
+                Intent iG=new Intent(this,QrGenerateActivity.class);
                 startActivity(iG);
                 finish();
                 break;

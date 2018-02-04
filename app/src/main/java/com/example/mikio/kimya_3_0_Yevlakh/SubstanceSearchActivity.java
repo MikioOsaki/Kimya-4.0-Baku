@@ -30,7 +30,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QrGenSucheActivity extends AppCompatActivity {
+public class SubstanceSearchActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
@@ -39,20 +39,20 @@ public class QrGenSucheActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
         finish();
-    }
+     }
 
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
     public static final int CONNECTION_TIMEOUT = 10000;
     public static final int READ_TIMEOUT = 15000;
     private RecyclerView mRVCompound;
-    private QrAdapterCompound mAdapter;
+    private AdapterCompound mAdapter;
 
     SearchView searchView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qr_gen_suche);
+        setContentView(R.layout.activity_manuelle_suche);
     }
 
     @Override
@@ -63,12 +63,13 @@ public class QrGenSucheActivity extends AppCompatActivity {
 
         // Get Search item from action bar and Get Search service
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchManager searchManager = (SearchManager) QrGenSucheActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) SubstanceSearchActivity.this.getSystemService(Context.SEARCH_SERVICE);
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
+            searchView.setQueryHint("Suche (mind. 4 Buchstaben)");
         }
         if (searchView != null) {
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(QrGenSucheActivity.this.getComponentName()));
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(SubstanceSearchActivity.this.getComponentName()));
             searchView.setIconified(false);
         }
 
@@ -85,13 +86,13 @@ public class QrGenSucheActivity extends AppCompatActivity {
                 searchView.clearFocus();
             }
             new AsyncFetch(query).execute();
-    }
+        }
     }
 
     // Create class AsyncFetch
     private class AsyncFetch extends AsyncTask<String, String, String> {
 
-        ProgressDialog pdLoading = new ProgressDialog(QrGenSucheActivity.this);
+        ProgressDialog pdLoading = new ProgressDialog(SubstanceSearchActivity.this);
         HttpURLConnection conn;
         URL url = null;
         String searchQuery;
@@ -186,17 +187,15 @@ public class QrGenSucheActivity extends AppCompatActivity {
 
             //this method will be running on UI thread
             pdLoading.dismiss();
-            List<DataCompound> data=new ArrayList<>();
+            List<SubstanceData> data=new ArrayList<>();
 
             pdLoading.dismiss();
             if(result.equals("no rows")) {
-                Toast.makeText(QrGenSucheActivity.this, "Keine Ergebnisse für die angegebene Anfrage (kein Eintrag gefunden)", Toast.LENGTH_LONG).show();
+                Toast.makeText(SubstanceSearchActivity.this, "Keine Ergebnisse für die angegebene Anfrage (kein Eintrag gefunden)", Toast.LENGTH_LONG).show();
             }
-            else if(result.equals("")) {
-                Toast.makeText(QrGenSucheActivity.this, "Keine Ergebnisse für die angegebene Anfrage", Toast.LENGTH_LONG).show();
+            else if(result.equals("")){
+                Toast.makeText(SubstanceSearchActivity.this, "Keine Ergebnisse für die angegebene Anfrage", Toast.LENGTH_LONG).show();
             }
-
-
             else{
 
                 try {
@@ -212,25 +211,25 @@ public class QrGenSucheActivity extends AppCompatActivity {
                         int id = jsonData.getInt("id");
                         String reach_nr = jsonData.getString("reach_nr");
 
-                        DataCompound dataCompound = new DataCompound(
+                        SubstanceData substanceData = new SubstanceData(
                                 name,
                                 cas,
                                 eg,
                                 id,
                                 reach_nr);
-                        data.add(dataCompound);
+                        data.add(substanceData);
                     }
 
                     // Setup and Handover data to recyclerview
-                    mRVCompound = (RecyclerView) findViewById(R.id.QrCompoundResultList);
-                    mAdapter = new QrAdapterCompound(QrGenSucheActivity.this, data);
+                    mRVCompound = (RecyclerView) findViewById(R.id.CompoundResultList);
+                    mAdapter = new AdapterCompound(SubstanceSearchActivity.this, data);
                     mRVCompound.setAdapter(mAdapter);
-                    mRVCompound.setLayoutManager(new LinearLayoutManager(QrGenSucheActivity.this));
+                    mRVCompound.setLayoutManager(new LinearLayoutManager(SubstanceSearchActivity.this));
 
                 } catch (JSONException e) {
                     // You to understand what actually error is and handle it appropriately
-                    Toast.makeText(QrGenSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                    Toast.makeText(QrGenSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ManuelleSucheActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ManuelleSucheActivity.this, result.toString(), Toast.LENGTH_LONG).show();
                 }
 
             }

@@ -33,7 +33,7 @@ import java.util.Map;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
-public class QrGenerate extends AppCompatActivity {
+public class QrCreateActivity extends AppCompatActivity {
 
     private static final int PERMISSION_REQUEST_CODE = 1;
 
@@ -63,13 +63,13 @@ public class QrGenerate extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.right_to_left, R.anim.left_to_right);
-        Intent iG = new Intent(this, QrGenSucheActivity.class);
+        Intent iG = new Intent(this, QrGenerateActivity.class);
         startActivity(iG);
         finish();
     }
 
     private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(QrGenerate.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int result = ContextCompat.checkSelfPermission(QrCreateActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (result == PackageManager.PERMISSION_GRANTED) {
             return true;
         } else {
@@ -79,10 +79,10 @@ public class QrGenerate extends AppCompatActivity {
 
     private void requestPermission() {
 
-        if (ActivityCompat.shouldShowRequestPermissionRationale(QrGenerate.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText(QrGenerate.this, "Sie müssen den Zugriff erlauben um diese Funktion nutzen zu können.", Toast.LENGTH_LONG).show();
+        if (ActivityCompat.shouldShowRequestPermissionRationale(QrCreateActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            Toast.makeText(QrCreateActivity.this, "Sie müssen den Zugriff erlauben um diese Funktion nutzen zu können.", Toast.LENGTH_LONG).show();
         } else {
-            ActivityCompat.requestPermissions(QrGenerate.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(QrCreateActivity.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
     }
 

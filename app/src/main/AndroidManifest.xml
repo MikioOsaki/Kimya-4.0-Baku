@@ -45,9 +45,9 @@
         <activity
             android:name=".ScanActivity"
             android:label="@string/app_name" />
-        <activity android:name=".QrGenerate" />
+        <activity android:name=".QrCreateActivity" />
         <activity
-            android:name=".ManuelleSucheActivity"
+            android:name=".SubstanceSearchActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop">
             <intent-filter>
@@ -61,7 +61,7 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".QrGenSucheActivity"
+            android:name=".QrGenerateActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop">
             <intent-filter>
