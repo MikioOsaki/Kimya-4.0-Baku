@@ -2,7 +2,7 @@
 
 A in progress student project.
 
-Current version 3.0 Yevlakh.
+Current version 3.1 Yevlakh.
 
 If installation error after running -> first clean and rebuild project.
 
