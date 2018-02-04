@@ -82,7 +82,7 @@ public class QrGenerate extends AppCompatActivity {
     private void requestPermission() {
 
         if (ActivityCompat.shouldShowRequestPermissionRationale(QrGenerate.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            Toast.makeText(QrGenerate.this, "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+            Toast.makeText(QrGenerate.this, "Sie müssen den Zugriff erlauben um diese Funktion nutzen zu können.", Toast.LENGTH_LONG).show();
         } else {
             ActivityCompat.requestPermissions(QrGenerate.this, new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
         }
@@ -93,9 +93,9 @@ public class QrGenerate extends AppCompatActivity {
         switch (requestCode) {
             case PERMISSION_REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.e("value", "Permission Granted, Now you can use local drive .");
+                    Log.e("value", "Zugriff erteilt");
                 } else {
-                    Log.e("value", "Permission Denied, You cannot use local drive .");
+                    Log.e("value", "Zugriff verweigert");
                 }
                 break;
         }
@@ -165,7 +165,7 @@ public class QrGenerate extends AppCompatActivity {
 
             MediaStore.Images.Media.insertImage(getContentResolver(),file.getAbsolutePath(),file.getName(),file.getName());
 
-            Toast.makeText(this, "Sie haben den QR-Code für den Stoff "+qrCodeName+" erstellt. Er ist auf dem internen Speicher Ihres Handys zu finden.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Sie haben den QR-Code für den Stoff "+qrCodeName+" erstellt. Er ist auf Ihrem Smartphone auf dem folgenden Pfad hinterlegt:\n"+path, Toast.LENGTH_LONG).show();
         }
         catch (Exception er){
             Log.e("QrGenerate",er.getMessage());
