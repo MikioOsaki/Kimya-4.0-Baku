@@ -2,7 +2,7 @@
 
 A in progress student project.
 
-Current version 3.1 Yevlakh.
+Current version 4.0 Baku.
 
 If installation error after running -> first clean and rebuild project.
 
