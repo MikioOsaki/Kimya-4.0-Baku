@@ -10,10 +10,11 @@
 
 
     <TextView
+        android:id="@+id/textViewFormName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:layout_marginLeft="60dp"
+        android:layout_alignLeft="@id/myRectangleView"
+        android:layout_alignTop="@id/myRectangleView"
         android:text="Sicherheitsdatenblatt öffnen:"/>
     <View
         android:id="@+id/myRectangleView"
